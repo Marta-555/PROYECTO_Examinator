@@ -1,5 +1,5 @@
 <?php
-class User{
+class Usuario{
 
     /**
      * Atributos de clase
