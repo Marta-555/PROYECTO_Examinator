@@ -1,10 +1,11 @@
 <?php
-require_once('Sesion.php');
+require_once('sesion.php');
 require_once('BD.php');
+
 class Login
 {
     public static function Identifica($usuario, $password, $recuerdame){
-        if(self::ExisteUsuario($usuario, $password)){
+        if(self::existeUsuario($usuario, $password)){
             Sesion::iniciar();
             Sesion::escribir('login', $usuario);
             if($recuerdame){
@@ -15,15 +16,15 @@ class Login
         return false;
     }
 
-    private static function ExisteUsuario($usuario, $password=null){
+    private static function existeUsuario($usuario, $password=null){
         BD::conectar();
-        return BD::existeusuario($usuario, $password);
+        return BD::existeUsuario($usuario, $password);
     }
 
-    public static function UsuarioEstaLogueado(){
+    public static function usuarioEstaLogueado(){
         if(Sesion::leer('login')){
             return true;
-        } elseif(isset($_COOKIE['recuerdame']) && self::ExisteUsuario($_COOKIE['recuerdame'])){
+        } elseif(isset($_COOKIE['recuerdame']) && self::existeUsuario($_COOKIE['recuerdame'])){
             Sesion::iniciar();
             Sesion::escribir('login', $_COOKIE['recuerdame']);
             return true;

@@ -33,8 +33,6 @@ class ExamenRealizado{
         $this->ejecucion = $row['ejecucion'];
     }
 
-?>
-
-
-
 }
+
+?>

@@ -1,22 +1,28 @@
 <?php
-require_once("BD.php");
+require_once("helper/login.php");
+require_once("helper/validacion.php");
 
 
-$error = "";
-//Comprobamos que se han enviado los datos
+$valida = new Validacion();
+
 if(isset($_POST['aceptar'])){
-  $usuario = $_POST['usuario'];
-  $password = $_POST['password'];
+  $valida->Requerido('usuario');
+  $valida->Requerido('password');
 
-  //Si alguno de los campos está vacío mostramos el error
-  if(empty($usuario) || empty($password)){
-    $error = "Usuario y/o contraseña incorrecto";
+  if($valida->ValidacionPasada()){
+    if(Login::Identifica($_POST['usuario'],$_POST['password'],
+    isset($_POST['recuerdame'])?$_POST['recuerdame']:false)){
+        header("Location: altaUsuario.php");
+    } else {
+        header("Location: iniciarsesion.php");
+    }
   } else {
-    if(BD::existeusuario($usuario, $password))
+    header("Location: iniciarsesion.php");
   }
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,11 +38,11 @@ if(isset($_POST['aceptar'])){
     </p>
     <p id="user">
       <label for="usuario">Usuario/email</label> <br>
-      <input type="text" name="usuario" id="usuario" maxlength="50"> <br>
+      <input type="text" name="usuario" id="usuario" maxlength="50" required="required"><br>
     </p>
     <p id="pass">
       <label for="password">Contraseña</label> <br>
-      <input type="password" name="password" id="password" maxlength="50"> <br>
+      <input type="password" name="password" id="password" maxlength="50" required="required"><br>
     </p>
     <p>
       <input type="submit" name="aceptar" value="Aceptar">
@@ -46,4 +52,6 @@ if(isset($_POST['aceptar'])){
   </form>
 </body>
 </html>
+
+
 
