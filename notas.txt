@@ -1,0 +1,15 @@
+Clase respuesta: Poner como tipo Pregunta $pregunta
+Clase pregunta: Poner como tipo Tematica $tematica, y respCorrecta (array de objeto respuesta)
+
+Todas las relaciones 1:N y N:M de la BD son arrays en php
+
+
+
+Método subido a la plataforma: para obtener los elementos que deben aparecer en la tabla principal, usar un método al que le pasamos la tabla a la que queremos ir y el numero de filas
+Crear un método paginador (bucle que construya los pies de página - "Pagina.php?P=...&T=...)
+
+
+Crear login de acceso 
+Página de inicio con Alta usuario (perfil admin)
+
+Alta examen
