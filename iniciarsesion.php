@@ -1,7 +1,5 @@
 <?php
-require_once("helper/BD.php");
 require_once("helper/login.php");
-require_once("helper/sesion.php");
 require_once("helper/validacion.php");
 
 
@@ -13,8 +11,7 @@ if(isset($_POST['aceptar'])){
 
   if($valida->ValidacionPasada()){
     if(Login::Identifica($_POST['usuario'],$_POST['password'], isset($_POST['recuerdame'])?$_POST['recuerdame']:false)){
-      Sesion::escribir('usuario', BD::obtieneUsuario($_POST['usuario'],$_POST['password']));
-      header("Location: altaUsuario.php");
+      header("Location: index.php");
     } else {
       header("Location: iniciarsesion.php");
     }
@@ -22,7 +19,6 @@ if(isset($_POST['aceptar'])){
     header("Location: iniciarsesion.php");
   }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +44,11 @@ if(isset($_POST['aceptar'])){
     </p>
     <p>
       <input type="submit" name="aceptar" value="Aceptar">
+    </p>
+    <p>
+      <label for="recuerdame">
+        <input type='checkbox' name='recuerdame'> Recuerdame
+      </label>
     </p>
     <p><a href="">¿Has olvidado tu contraseña?</a></p>
     <p><a href="">Nueva cuenta de usuario</a></p>

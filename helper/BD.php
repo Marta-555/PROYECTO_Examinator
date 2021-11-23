@@ -1,5 +1,6 @@
 <?php
 require_once('./Clases/Usuario.php');
+require_once('./Clases/Tematica.php');
 
 class BD{
     private static $conexion;
@@ -34,18 +35,6 @@ class BD{
             $u = new Usuario(array('email'=>$registro['email'], 'nombre'=>$registro['nombre'], 'apellidos'=>$registro['apellidos'], 'password'=>$registro['password'], 'fecha_nacim'=>$registro['fecha_nacim'],'rol'=>$registro['rol'], 'foto'=>$registro['foto'], 'activo'=>$registro['activo']));
         }
         return $u;
-
-        /*$sql= self::$conexion->query("select * from autoescuela.usuario where email ='$usuario' and password='$password'");
-
-        if($sql != false){
-            $registro = $sql->fetch();
-            $u = new Usuario($registro['email'], $registro['nombre'], $registro['apellidos'], $registro['password'], $registro['fecha_nacim'], $registro['rol'], $registro['foto'], $registro['activo']);
-
-            $u->id = $registro['id'];
-
-            return $u;
-        }
-        */
     }
 
     /**
@@ -72,6 +61,15 @@ class BD{
         $sql->bindParam(':foto', $foto);
         $sql->bindParam(':activo', $activo);
 
+        $sql->execute();
+
+    }
+
+    public static function altaTematica (Tematica $t) {
+        $sql = self::$conexion->prepare("Insert into autoescuela.tematica values(default, :tema)");
+        $tema = $t->getTema();
+
+        $sql->bindParam(':tema', $tema);
         $sql->execute();
 
     }

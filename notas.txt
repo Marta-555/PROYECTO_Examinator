@@ -9,7 +9,16 @@ Método subido a la plataforma: para obtener los elementos que deben aparecer en
 Crear un método paginador (bucle que construya los pies de página - "Pagina.php?P=...&T=...)
 
 
-Crear login de acceso 
-Página de inicio con Alta usuario (perfil admin)
+TAREAS:
+- Cerrar sesion
+- Alta pregunta
+- Alta tematica
 
-Alta examen
+- Alta examen
+-
+
+
+COSAS QUE DEBO MODIFICAR:
+- Alta usuario:
+    - eliminar el campo contraseña y enviar al usuario un correo con una contraseña aleatoria. Cuando el usuario acceda por primera vez deberá cambiarla obligatoriamente.
+    - esta pantalla solo se mostrará si el usuario que entra es el administrador.

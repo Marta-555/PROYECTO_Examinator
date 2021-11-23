@@ -17,7 +17,6 @@ class Tematica{
      * Constructor
      */
     public function __construct($row){
-        $this->id = $row['id'];
         $this->tema = $row['tema'];
     }
 }
