@@ -31,7 +31,7 @@ class Usuario{
      * Constructor
      */
     public function __construct($row){
-        $this->id = $row['id'];
+        //$this->id = $row['id'];
         $this->email = $row['email'];
         $this->nombre = $row['nombre'];
         $this->apellidos = $row['apellidos'];
@@ -41,6 +41,18 @@ class Usuario{
         $this->foto = $row['foto'];
         $this->activo = $row['activo'];
     }
+
+    /* public function __construct($email, $nombre, $apellidos, $password, $fecha_nacim, $rol, $foto, $activo){
+        $this->email = $email;
+        $this->nombre = $nombre;
+        $this->apellidos = $apellidos;
+        $this->password= $password;
+        $this->fecha_nacim= $fecha_nacim;
+        $this->rol = $rol;
+        $this->foto = $foto;
+        $this->activo = $activo;
+    }
+    */
 }
 
 ?>

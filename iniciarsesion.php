@@ -1,5 +1,7 @@
 <?php
+require_once("helper/BD.php");
 require_once("helper/login.php");
+require_once("helper/sesion.php");
 require_once("helper/validacion.php");
 
 
@@ -10,11 +12,11 @@ if(isset($_POST['aceptar'])){
   $valida->Requerido('password');
 
   if($valida->ValidacionPasada()){
-    if(Login::Identifica($_POST['usuario'],$_POST['password'],
-    isset($_POST['recuerdame'])?$_POST['recuerdame']:false)){
-        header("Location: altaUsuario.php");
+    if(Login::Identifica($_POST['usuario'],$_POST['password'], isset($_POST['recuerdame'])?$_POST['recuerdame']:false)){
+      Sesion::escribir('usuario', BD::obtieneUsuario($_POST['usuario'],$_POST['password']));
+      header("Location: altaUsuario.php");
     } else {
-        header("Location: iniciarsesion.php");
+      header("Location: iniciarsesion.php");
     }
   } else {
     header("Location: iniciarsesion.php");

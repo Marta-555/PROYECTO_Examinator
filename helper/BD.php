@@ -31,17 +31,27 @@ class BD{
     public static function obtieneUsuario($usuario,$password):Usuario {
         $sql= self::$conexion->query("select * from autoescuela.usuario where email ='$usuario' and password='$password'");
         while ($registro = $sql->fetch()){
-            $u = new Usuario(array('id'=>$registro['id'],'email'=>$registro['email'], 'nombre'=>$registro['nombre'], 'apellidos'=>$registro['apellidos'], 'password'=>$registro['password'], 'fecha_nacim'=>$registro['fecha_nacim'],'rol'=>$registro['rol'], 'foto'=>$registro['foto'], 'activo'=>$registro['activo']));
+            $u = new Usuario(array('email'=>$registro['email'], 'nombre'=>$registro['nombre'], 'apellidos'=>$registro['apellidos'], 'password'=>$registro['password'], 'fecha_nacim'=>$registro['fecha_nacim'],'rol'=>$registro['rol'], 'foto'=>$registro['foto'], 'activo'=>$registro['activo']));
         }
         return $u;
 
+        /*$sql= self::$conexion->query("select * from autoescuela.usuario where email ='$usuario' and password='$password'");
+
+        if($sql != false){
+            $registro = $sql->fetch();
+            $u = new Usuario($registro['email'], $registro['nombre'], $registro['apellidos'], $registro['password'], $registro['fecha_nacim'], $registro['rol'], $registro['foto'], $registro['activo']);
+
+            $u->id = $registro['id'];
+
+            return $u;
+        }
+        */
     }
 
     /**
      * Método para dar da alta un usuario en la BD
      */
-    public static function altaUsuario (Usuario $u)
-    {
+    public static function altaUsuario (Usuario $u) {
         $sql = self::$conexion->prepare("Insert into autoescuela.usuario values(default, :email, :nombre, :apellidos, :password, :fecha_nacim, :rol, :foto, :activo)");
 
         $email = $u->getEmail();
