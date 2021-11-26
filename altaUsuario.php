@@ -1,12 +1,10 @@
 <?php
-require_once("helper/BD.php");
-require_once("helper/login.php");
-require_once("helper/sesion.php");
-require_once("helper/validacion.php");
-require_once("Clases/Usuario.php");
+require "cargadores/cargarhelper.php";
+require "cargadores/cargarclases.php";
+
 
 Sesion::iniciar();
-if(!Sesion::existe("usuario")) {
+if(!Sesion::existe("login")) {
   header("Location:iniciarsesion.php");
 }
 
@@ -76,7 +74,6 @@ if(isset($_POST['registrar'])){
       <input type="file" name="foto">
     </p>
     <p><input type="submit" name="registrar" value="Aceptar"></p>
-    <a href=''> Cerrar sesión </a>
 
   </form>
 </body>

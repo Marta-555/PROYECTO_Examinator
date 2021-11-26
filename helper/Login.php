@@ -1,6 +1,5 @@
 <?php
-require_once('sesion.php');
-require_once('BD.php');
+require "./cargadores/cargarhelper.php";
 
 class Login
 {

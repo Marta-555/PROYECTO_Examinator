@@ -1,6 +1,5 @@
 <?php
-require_once('./Clases/Usuario.php');
-require_once('./Clases/Tematica.php');
+require "./cargadores/cargarclases.php";
 
 class BD{
     private static $conexion;
@@ -71,6 +70,17 @@ class BD{
 
         $sql->bindParam(':tema', $tema);
         $sql->execute();
+
+    }
+
+    public static function preguntas_tematica(){
+        $sql = self::$conexion->prepare("SELECT preguntas.enunciado, tematica.tema FROM autoescuela.preguntas, autoescuela.tematica WHERE preguntas.tematica=tematica.id;");
+        $sql->execute();
+
+        return $sql;
+    }
+
+    public static function preguntas_seleccionadas(){
 
     }
 }

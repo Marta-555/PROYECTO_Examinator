@@ -1,6 +1,5 @@
 <?php
-require_once("helper/login.php");
-require_once("helper/validacion.php");
+require "./cargadores/cargarhelper.php";
 
 
 $valida = new Validacion();

@@ -1,19 +1,5 @@
-Clase respuesta: Poner como tipo Pregunta $pregunta
-Clase pregunta: Poner como tipo Tematica $tematica, y respCorrecta (array de objeto respuesta)
-
-Todas las relaciones 1:N y N:M de la BD son arrays en php
-
-
-
-Método subido a la plataforma: para obtener los elementos que deben aparecer en la tabla principal, usar un método al que le pasamos la tabla a la que queremos ir y el numero de filas
-Crear un método paginador (bucle que construya los pies de página - "Pagina.php?P=...&T=...)
-
-
 TAREAS:
-- Cerrar sesion
 - Alta pregunta
-- Alta tematica
-
 - Alta examen
 -
 
@@ -22,3 +8,33 @@ COSAS QUE DEBO MODIFICAR:
 - Alta usuario:
     - eliminar el campo contraseña y enviar al usuario un correo con una contraseña aleatoria. Cuando el usuario acceda por primera vez deberá cambiarla obligatoriamente.
     - esta pantalla solo se mostrará si el usuario que entra es el administrador.
+
+- Cuando se accede a un enlace de nav, todo debe permanecer tal y como está excepto el cuerpo principal de la app (que va mostrando el contenido al que queremos acceder).
+
+- Clase respuesta: Poner como tipo Pregunta $pregunta
+
+- Clase pregunta: Poner como tipo Tematica $tematica, y respCorrecta (array de objeto respuesta)
+
+
+NOTAS:
+Todas las relaciones 1:N y N:M de la BD son arrays en php
+
+Método paginador subido a la plataforma: para obtener los elementos que deben aparecer en la tabla principal, usar un método al que le pasamos la tabla a la que queremos ir y el numero de filas
+Crear un método paginador (bucle que construya los pies de página - "Pagina.php?P=...&T=...)
+
+
+Creamos una tabla nueva en la BD para el alta de usuarios:
+son altas pendientes de confirmar.
+campos: usuario, id unico de confirmacion, fecha
+
+Cuando damos de alta un usuario (o alta masiva), se envía un correo al usuario con un enlace a la página web, en la que incluiremos, en el URL, su id(http://....?id=...). Llegará a la página de alta de usuario para que ponga su contraseña y demás datos(si están rellenos -alta usuario-, los puede cambiar, si no -alta masiva- los debe rellenar).
+
+Una vez haya cambiado la contraseña, confirmamos el alta en la BD(confirmarAlta.php: $_GET['id']=quién eres??), se borra ese id de la BD altaspendientes y se añade a la tabla de usuarios.
+
+para generar el ID:
+    <?php
+
+
+    ?>
+
+Eliminar activo de la tabla de usuario
