@@ -19,7 +19,6 @@ class Respuesta{
      * Constructor
      */
     public function __construct($row){
-        $this->id = $row['id'];
         $this->enunciado = $row['enunciado'];
         $this->pregunta = $row['pregunta'];
     }

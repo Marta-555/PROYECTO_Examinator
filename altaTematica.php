@@ -19,8 +19,6 @@ if(isset($_POST['aceptar'])){
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

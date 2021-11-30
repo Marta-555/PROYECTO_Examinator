@@ -42,7 +42,7 @@ if(isset($_POST['aceptar'])){
       <input type="password" name="password" id="password" maxlength="50" required="required"><br>
     </p>
     <p>
-      <input type="submit" name="aceptar" value="Aceptar">
+      <input type="submit" name="aceptar" value="Aceptar" class="btn">
     </p>
     <p>
       <label for="recuerdame">

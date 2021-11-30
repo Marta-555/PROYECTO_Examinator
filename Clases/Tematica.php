@@ -5,19 +5,20 @@ class Tematica{
      * Atributos de clase
      */
     protected $id;
-    protected $tema;
+    protected $descripcion;
 
     /**
      * Métodos getter
      */
     public function getId(){return $this->id; }
-    public function getTema(){return $this->tema; }
+    public function getDescripcion(){return $this->descripcion; }
 
     /**
      * Constructor
      */
     public function __construct($row){
-        $this->tema = $row['tema'];
+        $this->id = $row['id'];
+        $this->descripcion = $row['descripcion'];
     }
 }
 

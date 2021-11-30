@@ -64,15 +64,70 @@ class BD{
 
     }
 
-    public static function altaTematica (Tematica $t) {
-        $sql = self::$conexion->prepare("Insert into autoescuela.tematica values(default, :tema)");
-        $tema = $t->getTema();
+    public static function altaPregunta(Pregunta $p){
+        $sql = self::$conexion->prepare("Insert into autoescuela.preguntas values(default, :enunciado, :resp_correcta, :recurso, :tematica)");
 
-        $sql->bindParam(':tema', $tema);
+        $enunciadoP = $p->getEnunciado();
+        $rCorrecta = $p->getRespCorrecta();
+        $recurso = $p->getRecurso();
+        $tematica = $p->getTematica();
+
+        $sql->bindParam(':enunciado', $enunciadoP);
+        $sql->bindParam(':resp_correcta', $rCorrecta);
+        $sql->bindParam(':recurso', $recurso);
+        $sql->bindParam(':tematica', $tematica);
+
+        $sql->execute();
+    }
+
+    public static function altaRespuesta(Respuesta $r){
+        $sql = self::$conexion->prepare("Insert into autoescuela.respuestas values(default, :enunciado, :pregunta)");
+
+        $enunciado = $r->getEnunciado();
+        $pregunta = $r->getPregunta();
+
+        $sql->bindParam(':enunciado', $enunciado);
+        $sql->bindParam(':pregunta', $pregunta);
+
+        $sql->execute();
+    }
+
+    public static function altaTematica (Tematica $t) {
+        $sql = self::$conexion->prepare("Insert into autoescuela.tematica values(default, :descripcion)");
+        $tema = $t->getDescripcion();
+
+        $sql->bindParam(':descripcion', $tema);
         $sql->execute();
 
     }
 
+    public static function obtieneTematicas(){
+        $sql= self::$conexion->query("select * from autoescuela.tematica");
+
+        $temas = array();
+        while ($registro = $sql->fetch()){
+            $t = new Tematica(array('id'=>$registro['id'], 'descripcion'=>$registro['descripcion']));
+            $temas[]=$t;
+        }
+        return $temas;
+    }
+
+    public static function obtieneId(string $tabla){
+        $sql = self::$conexion->query("Select id from autoescuela.".$tabla." order by id desc limit 1");
+        while($registro = $sql->fetch()){
+            $id = $registro['id'];
+        }
+        return $id;
+    }
+
+    //Introducimos el idRespuesta en la pregunta con id...
+    public static function modificaRCorrecta($idR, $idP){
+        $sql = self::$conexion->prepare("Update autoescuela.preguntas set resp_correcta=".$idR." where id=".$idP."");
+
+        $sql->execute();
+    }
+
+    /*
     public static function preguntas_tematica(){
         $sql = self::$conexion->prepare("SELECT preguntas.enunciado, tematica.tema FROM autoescuela.preguntas, autoescuela.tematica WHERE preguntas.tematica=tematica.id;");
         $sql->execute();
@@ -83,6 +138,8 @@ class BD{
     public static function preguntas_seleccionadas(){
 
     }
+    */
+
 }
 
 ?>
