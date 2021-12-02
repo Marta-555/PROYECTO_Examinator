@@ -38,3 +38,15 @@ para generar el ID:
     ?>
 
 Eliminar activo de la tabla de usuario
+
+
+<div class="..... ..... .... "> Un elemento puede tener varias clases.
+Para poder trabajar con ellas en javascript, podemos hacer lo siguiente:
+
+Elemento que apunta a div = var d;
+d.classList.append("nombre_clase") -> añade una nueva clase al elemento
+d.classList.remove("nombre_clase") -> elimina la clase indicada
+d.classList.toggle("nombre_clase") -> si la clase existe, la elimina, si no, la crea
+
+
+Alta masiva: textArea en el que introducimos correos. Cuando se envia al servidor para almacenarlos en la nueva tabla (usuarios por confirmar), se comprueba que el correo introducido no ha sido almacenado anteriormente

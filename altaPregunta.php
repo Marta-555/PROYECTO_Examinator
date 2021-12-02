@@ -31,7 +31,7 @@ if(isset($_POST['aceptar'])){
       move_uploaded_file($_FILES['recurso']['tmp_name'],"../../".$recurso);
     }
 
-    $p = new Pregunta(array('enunciado'=>$_POST['enunciadoP'], 'respCorrecta'=>null, 'recurso'=>$recurso, 'tematica'=>$_POST['tematica']));
+    $p = new Pregunta(array('id'=>'default', 'enunciado'=>$_POST['enunciadoP'], 'respCorrecta'=>null, 'recurso'=>$recurso, 'tematica'=>$_POST['tematica']));
     BD::altaPregunta($p);
 
     $respuestas = array($_POST['resp1'], $_POST['resp2'], $_POST['resp3']);

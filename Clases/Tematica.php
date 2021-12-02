@@ -1,11 +1,11 @@
 <?php
-class Tematica{
+class Tematica implements JsonSerializable{
 
     /**
      * Atributos de clase
      */
-    protected $id;
-    protected $descripcion;
+    public $id;
+    public $descripcion;
 
     /**
      * Métodos getter
@@ -19,6 +19,13 @@ class Tematica{
     public function __construct($row){
         $this->id = $row['id'];
         $this->descripcion = $row['descripcion'];
+    }
+
+    public function jsonSerialize(){
+        return [
+            'id' => $this->id,
+            'descripcion' => $this->descripcion
+        ];
     }
 }
 

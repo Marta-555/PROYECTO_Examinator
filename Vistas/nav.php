@@ -23,7 +23,7 @@
       <li class="categoria">
           <a href="#">Exámenes</a>
           <ul class="submenu">
-            <li><a href="#">Alta examen</a></li>
+            <li><a href="altaExamen.php">Alta examen</a></li>
             <li><a href="#">Histórico</a></li>
         </ul>
       </li>

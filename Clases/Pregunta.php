@@ -1,14 +1,14 @@
 <?php
-class Pregunta{
+class Pregunta implements JsonSerializable{
 
     /**
      * Atributos de clase
      */
-    protected $id;
-    protected $enunciado;
-    protected $respCorrecta;
-    protected $recurso;
-    protected $tematica;
+    public $id;
+    public $enunciado;
+    public $respCorrecta;
+    public $recurso;
+    public $tematica;
 
     /**
      * Métodos getter
@@ -23,12 +23,22 @@ class Pregunta{
      * Constructor
      */
     public function __construct($row){
+        $this->id = $row['id'];
         $this->enunciado = $row['enunciado'];
         $this->respCorrecta = $row['respCorrecta'];
         $this->recurso = $row['recurso'];
         $this->tematica = $row['tematica'];
     }
 
+    public function jsonSerialize(){
+        return [
+            'id' => $this->id,
+            'enunciado' => $this->enunciado,
+            'respCorrecta' => $this->respCorrecta,
+            'recurso' => $this->recurso,
+            'tematica' => $this->tematica
+        ];
+    }
 }
 
 ?>

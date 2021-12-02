@@ -9,6 +9,7 @@ class BD{
      */
     public static function conectar(){
         self::$conexion = new PDO('mysql:host=localhost;dbname=autoescuela', 'root','');
+        self::$conexion->query("SET NAMES utf8");
     }
 
     /**
@@ -65,13 +66,15 @@ class BD{
     }
 
     public static function altaPregunta(Pregunta $p){
-        $sql = self::$conexion->prepare("Insert into autoescuela.preguntas values(default, :enunciado, :resp_correcta, :recurso, :tematica)");
+        $sql = self::$conexion->prepare("Insert into autoescuela.preguntas values(:id, :enunciado, :resp_correcta, :recurso, :tematica)");
 
+        $id = $p->getId();
         $enunciadoP = $p->getEnunciado();
         $rCorrecta = $p->getRespCorrecta();
         $recurso = $p->getRecurso();
         $tematica = $p->getTematica();
 
+        $sql->bindParam(':id', $id);
         $sql->bindParam(':enunciado', $enunciadoP);
         $sql->bindParam(':resp_correcta', $rCorrecta);
         $sql->bindParam(':recurso', $recurso);
@@ -120,25 +123,25 @@ class BD{
         return $id;
     }
 
-    //Introducimos el idRespuesta en la pregunta con id...
+    public static function obtienePreguntas_Tematica(){
+        $sql = self::$conexion->query("SELECT preguntas.*, tematica.id as tematica, tematica.descripcion FROM autoescuela.preguntas, autoescuela.tematica WHERE preguntas.tematica=tematica.id");
+
+        $preguntas = array();
+        while($registro = $sql->fetch(PDO::FETCH_ASSOC)){
+            $p = new Pregunta(array('id'=>$registro['id'] ,'enunciado'=>$registro['enunciado'], 'respCorrecta'=>$registro['resp_correcta'], 'recurso'=>$registro['recurso'], 'tematica'=>new Tematica(array('id'=>$registro['tematica'], 'descripcion'=>$registro['descripcion']))));
+
+            $preguntas[] = $p;
+        }
+        return $preguntas;
+
+    }
+
+    //Introducimos el id de resp_correcta en la pregunta con id...
     public static function modificaRCorrecta($idR, $idP){
         $sql = self::$conexion->prepare("Update autoescuela.preguntas set resp_correcta=".$idR." where id=".$idP."");
 
         $sql->execute();
     }
-
-    /*
-    public static function preguntas_tematica(){
-        $sql = self::$conexion->prepare("SELECT preguntas.enunciado, tematica.tema FROM autoescuela.preguntas, autoescuela.tematica WHERE preguntas.tematica=tematica.id;");
-        $sql->execute();
-
-        return $sql;
-    }
-
-    public static function preguntas_seleccionadas(){
-
-    }
-    */
 
 }
 
