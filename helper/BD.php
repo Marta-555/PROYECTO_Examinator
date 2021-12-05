@@ -97,9 +97,9 @@ class BD{
 
     public static function altaTematica(Tematica $t){
         $sql = self::$conexion->prepare("Insert into autoescuela.tematica values(default, :descripcion)");
-        $tema = $t->getDescripcion();
+        $descripcion = $t->getDescripcion();
 
-        $sql->bindParam(':descripcion', $tema);
+        $sql->bindParam(':descripcion', $descripcion);
         $sql->execute();
 
     }

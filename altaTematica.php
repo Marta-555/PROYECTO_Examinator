@@ -7,10 +7,10 @@ Sesion::iniciar();
 $valida = new Validacion();
 if(isset($_POST['aceptar'])){
 
-  $valida->Requerido('tema');
+  $valida->Requerido('descripcion');
 
   if($valida->ValidacionPasada()){
-    $tematica = new Tematica(array('tema'=>$_POST['tema']));
+    $tematica = new Tematica(array('id'=>'default', 'descripcion'=>$_POST['descripcion']));
 
     BD::conectar();
     BD::altaTematica($tematica);
@@ -31,8 +31,8 @@ if(isset($_POST['aceptar'])){
   <h1>Alta temática</h1>
   <form action="" method="post">
     <p>
-      <label for="tema">Descripción</label> <br>
-      <input type="text" name="tema" required="required">
+      <label for="descripcion">Descripción</label> <br>
+      <input type="text" name="descripcion" required="required">
     </p>
     <p><input type="submit" name="aceptar" value="Aceptar"></p>
   </form>
