@@ -95,11 +95,36 @@ class BD{
         $sql->execute();
     }
 
-    public static function altaTematica (Tematica $t) {
+    public static function altaTematica(Tematica $t){
         $sql = self::$conexion->prepare("Insert into autoescuela.tematica values(default, :descripcion)");
         $tema = $t->getDescripcion();
 
         $sql->bindParam(':descripcion', $tema);
+        $sql->execute();
+
+    }
+
+    public static function altaExamen(Examen $e){
+        $sql = self::$conexion->prepare("Insert into autoescuela.examen values(default, :descripcion, :n_preguntas, :duracion, :activo)");
+
+        $descripcion = $e->getDescripcion();
+        $n_preguntas = $e->getnPreguntas();
+        $duracion = $e->getDuracion();
+        $activo = $e->getActivo();
+
+        $sql->bindParam(':descripcion', $descripcion);
+        $sql->bindParam(':n_preguntas', $n_preguntas);
+        $sql->bindParam(':duracion', $duracion);
+        $sql->bindParam(':activo', $activo);
+
+        $sql->execute();
+    }
+
+    public static function altaExamenPreguntas($id_examen, $id_pregunta){
+        $sql = self::$conexion->prepare("Insert into autoescuela.examen_preguntas values(:id_examen, :id_pregunta)");
+
+        $sql->bindParam(':id_examen', $id_examen);
+        $sql->bindParam(':id_pregunta', $id_pregunta);
         $sql->execute();
 
     }

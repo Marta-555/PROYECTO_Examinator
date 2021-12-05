@@ -35,16 +35,14 @@ if(isset($_POST['aceptar'])){
     BD::altaPregunta($p);
 
     $respuestas = array($_POST['resp1'], $_POST['resp2'], $_POST['resp3']);
-    $tabla ="preguntas";
-    $idPregunta = BD::obtieneId($tabla);
+    $idPregunta = BD::obtieneId("preguntas");
 
     //Insertamos las respuestas
     for($i=0; $i<count($respuestas); $i++){
       $r = new Respuesta(array('enunciado'=>$respuestas[$i], 'pregunta'=>$idPregunta));
       BD::altaRespuesta($r);
       if($i == $_POST['rCorrecta']){
-        $tabla = "respuestas";
-        $idRespuesta = BD::obtieneId($tabla);
+        $idRespuesta = BD::obtieneId("respuestas");
 
         //Modificamos el campo resp_correcta de la tabla preguntas, añadiendo el id de la respCorrecta
         BD::modificaRCorrecta($idRespuesta, $idPregunta);

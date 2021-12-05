@@ -1,0 +1,43 @@
+.enunPos{
+    float: left;
+    width: 50%;
+}
+.enunSel{
+    float: left;
+    width: 50%;
+}
+
+
+div.pregunta{position:relative;height:50px;border:1px solid black;background-color:beige}
+
+div.oculto{
+    display:none;
+}
+
+#pPosibles{
+    clear: both;
+    position: relative;
+    width: 45%;
+    float: left;
+    height: 500px;
+    border: 1px solid black;
+    overflow-y: scroll;
+}
+
+#pSeleccionadas{
+    margin-left: 5%;
+    position: relative;
+    width: 45%;
+    float: left;
+    height: 500px;
+    border: 1px solid black;
+    overflow-y: scroll;
+}
+
+.btn{
+    clear: both;
+    float: left;
+}
+
+
+

@@ -6,7 +6,7 @@ class Examen {
      */
     protected $id;
     protected $descripcion;
-    protected $nPreguntas;
+    protected $n_preguntas;
     protected $duracion;
     protected $activo;
 
@@ -15,7 +15,7 @@ class Examen {
      */
     public function getId(){return $this->id; }
     public function getDescripcion(){return $this->descripcion; }
-    public function getnPreguntas(){return $this->nPreguntas; }
+    public function getnPreguntas(){return $this->n_preguntas; }
     public function getDuracion(){return $this->duracion; }
     public function getActivo(){return $this->activo; }
 
@@ -23,9 +23,8 @@ class Examen {
      * Constructor
      */
     public function __construct($row){
-        $this->id = $row['id'];
         $this->descripcion = $row['descripcion'];
-        $this->nPreguntas = $row['nPreguntas'];
+        $this->n_preguntas = $row['n_preguntas'];
         $this->duracion = $row['duracion'];
         $this->activo = $row['activo'];
     }
