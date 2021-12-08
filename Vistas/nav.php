@@ -17,7 +17,7 @@
           <a href="#">Preguntas</a>
           <ul class="submenu">
               <li><a href="altaPregunta.php">Alta pregunta</a></li>
-              <li><a href="#">Alta masiva</a></li>
+              <li><a href="altaMasivaPreguntas.php">Alta masiva</a></li>
           </ul>
       </li>
       <li class="categoria">
