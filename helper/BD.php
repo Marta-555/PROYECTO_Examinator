@@ -168,6 +168,51 @@ class BD{
         $sql->execute();
     }
 
+    public static function listarDatos(string $tabla, array $campos=null, int $pagina, int $filas):array {
+        $registros = array();
+
+        $otroscampos=null;
+        if(is_null($campos)){
+            $otroscampos="*";
+        } else {
+            $otroscampos=implode(",",$campos);
+        }
+        $sql = self::$conexion->query("Select ".$otroscampos." from autoescuela.".$tabla);
+
+        $registros = $sql->fetchAll();
+        $total = count($registros);
+        $paginas = ceil($total/$filas);
+
+        $registros = array();
+        if($pagina <= $paginas){
+            $inicio = ($pagina-1) * $filas;
+            $sql = self::$conexion->query("Select ".$otroscampos." from autoescuela.".$tabla." limit ".$inicio.", ".$filas);
+            $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $registros;
+
+    }
+
+
+    public static function listarDatosPreg(int $pagina, int $filas):array {
+        $registros = array();
+        $sql = self::$conexion->query("SELECT preguntas.id, preguntas.enunciado, tematica.descripcion FROM autoescuela.preguntas, autoescuela.tematica WHERE preguntas.tematica=tematica.id");
+
+        $registros = $sql->fetchAll();
+        $total = count($registros);
+        $paginas = ceil($total/$filas);
+
+        $registros = array();
+        if($pagina <= $paginas){
+            $inicio = ($pagina-1) * $filas;
+            $sql = self::$conexion->query("SELECT preguntas.id, preguntas.enunciado, tematica.descripcion FROM autoescuela.preguntas, autoescuela.tematica WHERE preguntas.tematica=tematica.id limit ".$inicio.",".$filas);
+            $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $registros;
+
+
+    }
+
 }
 
 ?>
