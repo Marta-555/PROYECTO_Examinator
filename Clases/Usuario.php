@@ -12,7 +12,6 @@ class Usuario{
     protected $fecha_nacim;
     protected $rol;
     protected $foto;
-    protected $activo;
 
     /**
      * Métodos getter
@@ -25,7 +24,6 @@ class Usuario{
     public function getFecha_nacim() {return $this->fecha_nacim; }
     public function getRol() {return $this->rol; }
     public function getFoto(){return $this->foto; }
-    public function getActivo(){return $this->activo; }
 
     /**
      * Constructor
@@ -39,7 +37,6 @@ class Usuario{
         $this->fecha_nacim= $row['fecha_nacim'];
         $this->rol = $row['rol'];
         $this->foto = $row['foto'];
-        $this->activo = $row['activo'];
     }
 
     /* public function __construct($email, $nombre, $apellidos, $password, $fecha_nacim, $rol, $foto, $activo){

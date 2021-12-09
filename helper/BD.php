@@ -1,5 +1,6 @@
 <?php
 require "./cargadores/cargarclases.php";
+require "./cargadores/cargarhelper.php";
 
 class BD{
     private static $conexion;
@@ -26,22 +27,41 @@ class BD{
         }
     }
 
+    public static function existeCorreo($email) {
+        $sql = self::$conexion->query("Select * from autoescuela.altas_por_confirmar where email='$email'");
+
+        $resultado = $sql->fetch();
+        if($resultado != 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * Método que devuelve un usuario como resultado de una consulta
      */
     public static function obtieneUsuario($usuario,$password):Usuario {
         $sql= self::$conexion->query("select * from autoescuela.usuario where email ='$usuario' and password='$password'");
         while ($registro = $sql->fetch()){
-            $u = new Usuario(array('email'=>$registro['email'], 'nombre'=>$registro['nombre'], 'apellidos'=>$registro['apellidos'], 'password'=>$registro['password'], 'fecha_nacim'=>$registro['fecha_nacim'],'rol'=>$registro['rol'], 'foto'=>$registro['foto'], 'activo'=>$registro['activo']));
+            $u = new Usuario(array('email'=>$registro['email'], 'nombre'=>$registro['nombre'], 'apellidos'=>$registro['apellidos'], 'password'=>$registro['password'], 'fecha_nacim'=>$registro['fecha_nacim'],'rol'=>$registro['rol'], 'foto'=>$registro['foto']));
         }
         return $u;
+    }
+
+    public static function altaUsuarioPorConfirmar($id_usuario, $email){
+        $sql = self::$conexion->prepare("Insert into autoescuela.altas_por_confirmar values(:id_usuario, :email, NOW())");
+
+        $sql->bindParam(':id_usuario', $id_usuario);
+        $sql->bindParam(':email', $email);
+        $sql->execute();
     }
 
     /**
      * Método para dar da alta un usuario en la BD
      */
     public static function altaUsuario (Usuario $u) {
-        $sql = self::$conexion->prepare("Insert into autoescuela.usuario values(default, :email, :nombre, :apellidos, :password, :fecha_nacim, :rol, :foto, :activo)");
+        $sql = self::$conexion->prepare("Insert into autoescuela.usuario values(default, :email, :nombre, :apellidos, :password, :fecha_nacim, :rol, :foto)");
 
         $email = $u->getEmail();
         $nombre = $u->getNombre();
@@ -50,7 +70,6 @@ class BD{
         $fecha_nacim = $u->getFecha_nacim();
         $rol = $u->getRol();
         $foto = $u->getFoto();
-        $activo = $u->getActivo();
 
         $sql->bindParam(':email', $email);
         $sql->bindParam(':nombre', $nombre);
@@ -59,7 +78,6 @@ class BD{
         $sql->bindParam(':fecha_nacim', $fecha_nacim);
         $sql->bindParam(':rol', $rol);
         $sql->bindParam(':foto', $foto);
-        $sql->bindParam(':activo', $activo);
 
         $sql->execute();
 

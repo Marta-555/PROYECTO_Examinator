@@ -28,7 +28,6 @@ if(!Sesion::existe("login")) {
         <th scope="col">Alumno/a</th>
         <th scope="col">Email</th>
         <th scope="col">Rol</th>
-        <th scope="col">Activo</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
