@@ -4,7 +4,7 @@
           <a href="tablaUsuarios.php">Usuarios</a>
           <ul class="submenu">
             <li><a href="altaUsuario.php">Alta usuario</a></li>
-            <li><a href="#">Alta masiva</a></li>
+            <li><a href="altaMasivaUsuarios.php">Alta masiva</a></li>
         </ul>
       </li>
       <li class="categoria">
