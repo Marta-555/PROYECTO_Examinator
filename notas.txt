@@ -1,7 +1,6 @@
 
 SERVIDOR
     - Alta usuario:
-        +Cuando damos de alta un usuario (o alta masiva), se envía un correo al usuario con un enlace a la página web, en la que incluiremos, en el URL, su id(http://....?id=...).
         +Llegará a la página de alta de usuario para que ponga su contraseña y demás datos.
         +Una vez haya cambiado la contraseña, confirmamos el alta en la BD(confirmarAlta.php: $_GET['id']=quién eres??), se borra ese id de la BD altaspendientes y se añade a la tabla de usuarios.
 
@@ -26,10 +25,6 @@ CLIENTE:
         +añadir un contador y un límite de preguntas
         +incluir recursos???
 
-    -Alta masiva:
-        +textArea en el que introducimos correos.
-        +Cuando se envia al servidor para almacenarlos en la nueva tabla (usuarios por confirmar), se comprueba que el correo introducido no ha sido almacenado anteriormente
-
 
 DISEÑO
 - Cuando se accede a un enlace de nav, todo debe permanecer tal y como está excepto el cuerpo principal de la app (que va mostrando el contenido al que queremos acceder).
@@ -37,14 +32,6 @@ DISEÑO
 
 NOTAS:
 Todas las relaciones 1:N y N:M de la BD son arrays en php
-
-para generar el ID:
-    <?php
-
-
-    ?>
-
-Eliminar activo de la tabla de usuario
 
 
 <div class="..... ..... .... "> Un elemento puede tener varias clases.

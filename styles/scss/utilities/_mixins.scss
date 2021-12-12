@@ -1,0 +1,46 @@
+//Colores para el menú de navegación
+@mixin colorAz_Claro {
+    color: $color-text;
+    background-color: $colorAz-claro;
+}
+//Colores para el menú de navegación cuando se pase el ratón por encima
+@mixin colorAz_hover{
+    color: $color-text-hover;
+    background-color: $colorAz-oscuro;
+}
+
+
+
+@mixin colorNar_Claro {
+    color: $color-text;
+    background-color: $colorNar-claro;
+}
+
+@mixin colorNar_hover{
+    color: $color-text-hover;
+    background-color: $colorNar-oscuro;
+}
+
+//para cambiar el modelo de caja por defecto
+@mixin box-sizing($property){
+    box-sizing: $property;
+    -webkit-box-sizing: $property;
+    -moz-box-sizing: $property;
+}
+
+@mixin transition($property, $duration, $timing: linear){
+    transition: $property $duration $timing;
+    -webkit-transition: $property $duration $timing;
+    -moz-transition: $property $duration $timing;
+}
+
+@mixin animation($name, $duration, $timing: linear) {
+    animation: $name $duration $timing;
+    -webkit-animation: $name $duration $timing;
+    -moz-animation: $name $duration $timing;
+}
+
+//Para mover un elemento
+@mixin translate($valorX, $valorY) {
+    transform: translate($valorX, $valorY);
+}

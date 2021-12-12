@@ -1,12 +1,36 @@
-.btn {
-    border: 0;
-    border-radius: 50px;
-    font-size: 12px;
-    cursor: pointer;
-    height: 40px;
-    font-weight: 700;
-    line-height: 40px;
-    vertical-align: middle;
-    text-decoration: none;
-    text-align: center
+#login {
+    .btnLogin {
+        .log{
+            padding:3px;
+            color:$color-text;
+            background-color:$colorAz-claro;
+            border:1px solid $colorAz-oscuro;
+            cursor: pointer;
+
+            &:hover{
+                @include colorAz_hover;
+                border:1px solid $colorAz-claro;
+            }
+        }
+
+    }
+}
+
+.masiva{
+    #btAceptar{
+        float: right;
+        margin: 5%;
+        width: 20%;
+        height: 25px;
+        cursor: pointer;
+        border: 2px solid $colorAz-oscuro;
+        border-radius: 10px;
+        transition: 1s linear;
+
+        &:hover{
+            background-color: $colorAz-claro;
+            color: $color-text-hover;
+            transform: scale(1.1);
+        }
+    }
 }

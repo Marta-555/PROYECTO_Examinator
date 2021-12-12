@@ -1,0 +1,19 @@
+#centro {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+    #fondo{
+        position: static;
+        width: 1200px;
+        height: 600px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        #fondo{
+            position: static;
+            width: 1200px;
+            height: 700px;
+        }
+    }
+}

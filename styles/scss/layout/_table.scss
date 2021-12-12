@@ -1,0 +1,58 @@
+table{
+    display: table;
+    border: 1px solid $colorNar-oscuro;
+    width: 70%;
+    background-color: $colorNar-claro;
+    margin-left: auto;
+    margin-right: auto;
+
+    tr {
+        height: 40px;
+    }
+
+    thead{
+        tr {
+            background-color: $colorNar-oscuro;
+            text-align: center;
+            font-weight: 600;
+
+            th {
+                padding: 5px;
+                border: 2px solid $colorNar-claro;
+                width: 15%;
+            }
+
+            .numId{
+                width: 5%;
+            }
+        }
+    }
+
+    tbody{
+
+        tr{
+            td{
+                border: 2px solid $colorNar-oscuro;
+                text-align: center;
+                padding: 5px;
+
+                span{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+
+}
+
+#paginador{
+    text-align: center;
+    margin: 2% auto;
+
+    input{
+        cursor: pointer;
+        width: 5%;
+        height: 25px;
+    }
+}

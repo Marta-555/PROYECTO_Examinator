@@ -1,0 +1,49 @@
+//PALETAS DE COLORES
+
+//Color de fondo
+$bgcolor: hsl(34, 56%, 83%);
+
+//Color de fuente
+$color-text: #333333;
+$color-text-hover: white;
+
+//MENÚ NAVEGACIÓN
+//Colores de la barra de menú
+//Color de fondo de la barra de menú
+$colorAz-claro: hsl(187, 48%, 66%);
+//Color de los elementos del menú al pasar el ratón sobre ellos
+$colorAz-oscuro: hsl(187, 67%, 43%);
+
+//ICONOS USUARIO
+//Color de fondo
+$colorNar-claro: hsl(34, 73%, 68%);
+//Color de los elementos al pasar el ratón sobre ellos
+$colorNar-oscuro: hsl(34, 100%, 45%);
+$colorNar-medio: hsl(34, 90%, 60%);
+
+//Color de los bordes
+$border-color: $color-text;
+
+//TABLAS
+// Colores para los columnas pares de las tablas
+$color-col-pares: #cccccc;
+// Colores para los columnas impares de las tablas
+$color-col-impares: #888888;
+
+//TAMAÑOS
+$xs-size: 0.8em;
+$s-size: 1.1em;
+$m-size: 1.4em;
+$l-size: 2.0em;
+$xl-size: 2.5em;
+
+
+//TIPOGRAFÍA
+$fuentes-texto: 'Times New Roman','Open Sans', 'Oswald', sans-serif;
+$fuentes-titulos: Georgia, 'Times New Roman';
+
+//BORDES
+// Ancho de los bordes
+$border-width: 1px;
+// Estilo de los bordes
+$border-style: "solid";

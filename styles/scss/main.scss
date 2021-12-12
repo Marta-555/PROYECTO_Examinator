@@ -1,4 +1,18 @@
-@import "./base/reset";
-@import "./base/typo";
+@import "utilities/variables";
+@import "utilities/functions";
+@import "utilities/mixins";
 
-@import "./components/buttons";
+@import "base/reset";
+@import "base/animations";
+@import "base/base";
+@import "base/typo";
+
+@import "layout/navigation";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/forms";
+@import "layout/table";
+
+@import "components/buttons";
+
+@import "views/home";

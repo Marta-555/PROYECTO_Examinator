@@ -14,27 +14,35 @@ if(!Sesion::existe("login")) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Usuarios</title>
+  <title>Examinator</title>
+  <link rel="stylesheet" type="text/css" href="styles/css/main.css">
   <script src="js/tablaUsuario.js"></script>
 </head>
 <body>
+  <?php require_once("Vistas/header.php");?>
 
-  <h2 align='center'>Listado de usuarios</h2>
+  <?php require_once("Vistas/nav.php");?>
 
-  <table align='center'>
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Alumno/a</th>
-        <th scope="col">Email</th>
-        <th scope="col">Rol</th>
-        <th scope="col">Acciones</th>
-      </tr>
-    </thead>
-    <tbody id="cuerpo"></tbody>
-  </table>
+  <section>
+    <h2>Listado de usuarios</h2>
 
-  <p id="paginador" align='center'></p>
+    <table>
+      <thead>
+        <tr>
+          <th class="numId">Id</th>
+          <th>Alumno/a</th>
+          <th>Email</th>
+          <th>Rol</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="cuerpo"></tbody>
+    </table>
+
+    <p id="paginador"></p>
+  </section>
+
+  <?php require_once("Vistas/footer.php");?>
 
 </body>
 </html>

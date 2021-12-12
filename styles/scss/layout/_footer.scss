@@ -1,0 +1,46 @@
+footer {
+    @include colorAz_Claro;
+    @include box-sizing(border-box);
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    padding: 10px;
+    font-family: $fuentes-texto;
+    font-size: $xs-size;
+
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+
+    div{
+        width: 20%;
+        margin: 0;
+
+        h3 {
+            color: $color-text;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            margin: 0;
+
+            .fab{
+                font-size: 20px;
+                margin: 1%;
+            }
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+
+        p{
+            padding: 0 20px;
+        }
+
+    }
+
+}

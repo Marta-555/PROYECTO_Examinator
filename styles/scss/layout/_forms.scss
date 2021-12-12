@@ -1,0 +1,81 @@
+//Estilo de la página del login
+#login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+
+    font-size: $s-size;
+    display: block;
+
+    padding: 20px;
+    background-color: $colorNar-medio;
+    border-radius: 10px;
+    width: 20%;
+    line-height: normal;
+
+    p {
+        text-align: center;
+        line-height: normal;
+
+        img{
+            background-color: beige;
+            border-radius: 50%;
+        }
+
+        .log {
+            width: 200px;
+            height: 25px;
+        }
+    }
+
+    .fnLogin{
+        font-size: 0.6em;
+        text-align: center;
+        padding: 0;
+        margin-right: 5%;
+
+        a{
+            text-decoration: none;
+        }
+    }
+}
+
+@media screen and(min-width: 640px) and (max-width: 1280px){
+    #login{
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #login{
+        width: 30%;
+    }
+}
+
+//Estilo de los formularios altaMasivaUsuarios y altaMasivaPreguntas
+section {
+    .masiva{
+        margin: 0 35%;
+        display: block;
+
+        h2 {
+            margin-top: 10%;
+            padding-top: 10px;
+        }
+
+        #archivoTexto{
+            margin: 1% 0 2% 20%;
+        }
+
+        p{
+            text-align: center;
+
+            #contenido{
+                background-color: $colorNar-claro;
+                color: $color-text;
+            }
+        }
+
+    }
+}

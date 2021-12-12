@@ -6,7 +6,7 @@ if(isset($_GET['tabla'])){
     $tabla = $_GET['tabla'];
 
     if($tabla == "usuario"){
-        $campos = ["id", "nombre", "apellidos", "email", "rol", "activo"];
+        $campos = ["id", "nombre", "apellidos", "email", "rol"];
         $datos = BD::listarDatos("usuario", $campos, $_GET['pagina'], $_GET['filas']);
     }
 

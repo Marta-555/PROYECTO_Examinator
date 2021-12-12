@@ -14,14 +14,17 @@ if(!Sesion::existe("login")) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Examinator</title>
-  <link rel="stylesheet" href="styles/css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="styles/css/main.css">
 </head>
 <body>
   <?php require_once("Vistas/header.php");?>
 
   <?php require_once("Vistas/nav.php");?>
 
-  <!--Contenido principal-->
+  <section id="centro">
+    <img id="fondo" src="img/imagen.jpg" alt="">
+  </section>
 
   <?php require_once("Vistas/footer.php");?>
 

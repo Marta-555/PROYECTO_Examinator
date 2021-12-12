@@ -1,12 +1,11 @@
-@charset "UTF-8";
 /*
 	Standard CSS Reset
 	This is used to account for differences in browsers.
 	Without a reset stylesheet there could be differences
 	between browsers when loading your html website.
 */
-@import url("https://fonts.google.com/specimen/Open+Sans#standard-styles");
-@import url("https://fonts.google.com/specimen/Vollkorn?query=Voll");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -57,18 +56,354 @@ table {
   border-spacing: 0;
 }
 
-/*
-	Tipografías del proyecto
-*/
-.btn {
-  border: 0;
-  border-radius: 50px;
-  font-size: 12px;
-  cursor: pointer;
-  height: 40px;
-  font-weight: 700;
-  line-height: 40px;
-  vertical-align: middle;
-  text-decoration: none;
+@-webkit-keyframes iluminar {
+  from {
+    color: #333333;
+    background-color: #7fc8d2;
+  }
+  to {
+    color: white;
+    background-color: #24a6b7;
+  }
+}
+
+@keyframes iluminar {
+  from {
+    color: #333333;
+    background-color: #7fc8d2;
+  }
+  to {
+    color: white;
+    background-color: #24a6b7;
+  }
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Times New Roman", "Open Sans", "Oswald", sans-serif;
+  font-size: 1.4em;
+  background-color: #ecd7bb;
+}
+
+section {
+  padding: 10px;
+  display: block;
+  background-color: white;
+  width: 100%;
+  height: 600px;
+}
+section h2 {
   text-align: center;
+  font-weight: 600;
+  font-family: Georgia, "Times New Roman";
+  font-size: 1.1em;
+  margin-top: 2%;
+  padding: 40px;
+}
+
+@media screen and (max-width: 860px) {
+  section {
+    height: 700px;
+  }
+}
+nav {
+  position: absolute;
+  width: 100%;
+  font-family: Georgia, "Times New Roman";
+  font-size: 0.8em;
+}
+nav > ul {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 34px;
+  color: #333333;
+  background-color: #7fc8d2;
+}
+nav ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+nav ul .submenu {
+  display: none;
+  position: absolute;
+  height: 0px;
+  transition: height 0.5s ease-out;
+  -webkit-transition: height 0.5s ease-out;
+  -moz-transition: height 0.5s ease-out;
+}
+nav ul a {
+  color: #333333;
+  background-color: #7fc8d2;
+  text-decoration: none;
+  width: 200px;
+  padding: 8px 20px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+nav ul a:hover {
+  color: white;
+  background-color: #24a6b7;
+  animation: iluminar 0.4s linear;
+  -webkit-animation: iluminar 0.4s linear;
+  -moz-animation: iluminar 0.4s linear;
+}
+nav li.categoria {
+  margin: 0 1%;
+  float: left;
+}
+nav li.categoria > a {
+  transition: padding 0.4s ease-out;
+  -webkit-transition: padding 0.4s ease-out;
+  -moz-transition: padding 0.4s ease-out;
+}
+nav li.categoria:hover > a {
+  padding: 15px 20px;
+}
+nav li.categoria:hover ul.submenu {
+  display: block;
+  height: 100px;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  background-color: #ecd7bb;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px #aaa;
+  font-family: "Times New Roman", "Open Sans", "Oswald", sans-serif;
+}
+
+a {
+  width: 8%;
+  margin-left: 5%;
+}
+a .logo {
+  width: 100%;
+}
+
+h1 {
+  font-size: 1.4em;
+  color: #333333;
+}
+
+div {
+  width: 10%;
+  margin-right: 5%;
+}
+div img {
+  width: 20%;
+  margin: 5%;
+  border-radius: 50%;
+  background-color: #e9b572;
+  transition: background-color 0.4s ease-out;
+  -webkit-transition: background-color 0.4s ease-out;
+  -moz-transition: background-color 0.4s ease-out;
+}
+div img:hover {
+  background-color: #e68200;
+}
+
+footer {
+  color: #333333;
+  background-color: #7fc8d2;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  padding: 10px;
+  font-family: "Times New Roman", "Open Sans", "Oswald", sans-serif;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+footer div {
+  width: 20%;
+  margin: 0;
+}
+footer div h3 {
+  color: #333333;
+  font-weight: 700;
+}
+footer div a {
+  text-decoration: none;
+  margin: 0;
+}
+footer div a .fab {
+  font-size: 20px;
+  margin: 1%;
+}
+footer div a:hover {
+  opacity: 0.8;
+}
+footer div p {
+  padding: 0 20px;
+}
+
+#login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1em;
+  display: block;
+  padding: 20px;
+  background-color: #f5a53d;
+  border-radius: 10px;
+  width: 20%;
+  line-height: normal;
+}
+#login p {
+  text-align: center;
+  line-height: normal;
+}
+#login p img {
+  background-color: beige;
+  border-radius: 50%;
+}
+#login p .log {
+  width: 200px;
+  height: 25px;
+}
+#login .fnLogin {
+  font-size: 0.6em;
+  text-align: center;
+  padding: 0;
+  margin-right: 5%;
+}
+#login .fnLogin a {
+  text-decoration: none;
+}
+
+@media screen and (min-width: 640px) and (max-width: 1280px) {
+  #login {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  #login {
+    width: 30%;
+  }
+}
+section .masiva {
+  margin: 0 35%;
+  display: block;
+}
+section .masiva h2 {
+  margin-top: 10%;
+  padding-top: 10px;
+}
+section .masiva #archivoTexto {
+  margin: 1% 0 2% 20%;
+}
+section .masiva p {
+  text-align: center;
+}
+section .masiva p #contenido {
+  background-color: #e9b572;
+  color: #333333;
+}
+
+table {
+  display: table;
+  border: 1px solid #e68200;
+  width: 70%;
+  background-color: #e9b572;
+  margin-left: auto;
+  margin-right: auto;
+}
+table tr {
+  height: 40px;
+}
+table thead tr {
+  background-color: #e68200;
+  text-align: center;
+  font-weight: 600;
+}
+table thead tr th {
+  padding: 5px;
+  border: 2px solid #e9b572;
+  width: 15%;
+}
+table thead tr .numId {
+  width: 5%;
+}
+table tbody tr td {
+  border: 2px solid #e68200;
+  text-align: center;
+  padding: 5px;
+}
+table tbody tr td span {
+  cursor: pointer;
+}
+
+#paginador {
+  text-align: center;
+  margin: 2% auto;
+}
+#paginador input {
+  cursor: pointer;
+  width: 5%;
+  height: 25px;
+}
+
+#login .btnLogin .log {
+  padding: 3px;
+  color: #333333;
+  background-color: #7fc8d2;
+  border: 1px solid #24a6b7;
+  cursor: pointer;
+}
+#login .btnLogin .log:hover {
+  color: white;
+  background-color: #24a6b7;
+  border: 1px solid #7fc8d2;
+}
+
+.masiva #btAceptar {
+  float: right;
+  margin: 5%;
+  width: 20%;
+  height: 25px;
+  cursor: pointer;
+  border: 2px solid #24a6b7;
+  border-radius: 10px;
+  transition: 1s linear;
+}
+.masiva #btAceptar:hover {
+  background-color: #7fc8d2;
+  color: white;
+  transform: scale(1.1);
+}
+
+#centro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#centro #fondo {
+  position: static;
+  width: 1200px;
+  height: 600px;
+}
+@media screen and (max-width: 1024px) {
+  #centro #fondo {
+    position: static;
+    width: 1200px;
+    height: 700px;
+  }
 }/*# sourceMappingURL=main.css.map */

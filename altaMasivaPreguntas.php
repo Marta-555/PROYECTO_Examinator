@@ -43,17 +43,27 @@ if(isset($_POST['aceptar'])){
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alta masiva de preguntas</title>
+  <title>Examinator</title>
+  <link rel="stylesheet" type="text/css" href="styles/css/main.css">
   <script src="js/altaMasiva.js" ></script>
 </head>
 <body>
-  <form action="" method="post">
-    <h2>Preguntas/Alta masiva de preguntas</h2>
-    <input type="file" name="archivoTexto" id="archivoTexto" required="required">
-    <p>
-      <textarea name="contenido" id="contenido" cols="60" rows="20" ></textarea>
-    </p>
-    <p><input type="submit" id="btAceptar" name="aceptar" value="Aceptar"></p>
-  </form>
+  <?php require_once("Vistas/header.php");?>
+
+  <?php require_once("Vistas/nav.php");?>
+
+  <section>
+    <form action="" method="post" class="masiva">
+      <h2>Preguntas/Alta masiva de preguntas</h2>
+      <input type="file" name="archivoTexto" id="archivoTexto" required="required">
+      <p>
+        <textarea name="contenido" id="contenido" cols="60" rows="20" ></textarea>
+      </p>
+      <p><input type="submit" id="btAceptar" name="aceptar" value="Aceptar"></p>
+    </form>
+  </section>
+
+  <?php require_once("Vistas/footer.php");?>
+
 </body>
 </html>
