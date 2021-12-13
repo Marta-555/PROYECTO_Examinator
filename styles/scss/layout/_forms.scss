@@ -130,22 +130,21 @@ section {
 
 }
 
-section{
+
+#ex{
     height: 700px;
 
-    form{
-        background-color: $colorNar-medio;
-    }
-
     .altaExam{
+        padding-top: 5px;
         display: block;
         text-align: center;
         font-family: $fuentes-titulos;
         font-size: $xs-size;
         line-height: 25px;
+        background-color: $colorNar-medio;
 
         .filtrar{
-            text-indent: 10px;
+            text-indent: 50px;
             text-align: left;
             margin-bottom: 1%;
         }
@@ -207,4 +206,31 @@ section{
         }
 
     }
+}
+
+.perfilUsuario{
+    height: 700px;
+
+    form{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 25%;
+        text-align: center;
+        height: 500px;
+        padding: 10px 0;
+        background-color: $colorNar-medio;
+        font-family: $fuentes-titulos;
+        font-size: $xs-size;
+        line-height: 25px;
+        border-radius: 10px;
+
+        p{
+            margin-left: 30%;
+            margin-right: 20%;
+            text-align: left;
+            line-height: 30px;
+        }
+    }
+
 }

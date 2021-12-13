@@ -35,43 +35,55 @@ if(isset($_POST['registrar'])){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Examinator</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="styles/css/main.css">
 </head>
 <body>
-  <h1>Alta de usuario</h1>
-  <form action="" method="post">
-    <p>
-      <label for="email">Email</label> <br>
-      <input type="email" name="email" required="required">
-    </p>
-    <p>
-      <label for="nombre">Nombre</label> <br>
-      <input type="text" name="nombre" required="required">
-    </p>
-    <p>
-      <label for="apellidos">Apellidos</label> <br>
-      <input type="text" name="apellidos" required="required">
-    </p>
-    <p>
-      <label for="password">Contraseña</label> <br>
-      <input type="password" name="password" required="required">
-    </p>
-    <p>
-      <label for="fecha_nacim">Fecha de nacimiento</label> <br>
-      <input type="date" name="fecha_nacim" required="required">
-    </p>
-    <p>
-      <label for="rol">Rol</label> <br>
-      <select name="rol">
-        <option value="Administrador">1. Administrador</option>
-        <option value="Alumno" selected>2. Alumno</option>
-      </select>
-    </p>
-    <p>
-      <label for="foto">Foto</label> <br>
-      <input type="file" name="foto">
-    </p>
-    <p><input type="submit" name="registrar" value="Aceptar"></p>
+  <?php require_once("Vistas/header.php");?>
 
-  </form>
+  <?php require_once("Vistas/nav.php");?>
+
+  <section class="perfilUsuario">
+    <h2>Perfil de usuario</h2>
+    <form action="" method="post">
+      <p><input type="submit" name="registrar" value="Editar"></p>
+      <p>
+        <label for="email">Email</label> <br>
+        <input type="email" name="email" required="required">
+      </p>
+      <p>
+        <label for="nombre">Nombre</label> <br>
+        <input type="text" name="nombre" required="required">
+      </p>
+      <p>
+        <label for="apellidos">Apellidos</label> <br>
+        <input type="text" name="apellidos" required="required">
+      </p>
+      <p>
+        <label for="password">Contraseña</label> <br>
+        <input type="password" name="password" required="required">
+      </p>
+      <p>
+        <label for="fecha_nacim">Fecha de nacimiento</label> <br>
+        <input type="date" name="fecha_nacim" required="required">
+      </p>
+      <p>
+        <label for="rol">Rol</label> <br>
+        <select name="rol">
+          <option value="Administrador">1. Administrador</option>
+          <option value="Alumno" selected>2. Alumno</option>
+        </select>
+      </p>
+      <p>
+        <label for="foto">Foto</label> <br>
+        <input type="file" name="foto">
+      </p>
+
+
+    </form>
+  </section>
+
+  <?php require_once("Vistas/footer.php");?>
+
 </body>
 </html>

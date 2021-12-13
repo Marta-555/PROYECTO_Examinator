@@ -60,7 +60,7 @@ function pintarTematicas(){
 
   <?php require_once("Vistas/nav.php");?>
 
-  <section>
+  <section id="ex">
     <h2>Alta examen</h2>
     <form action="" method="post" id="form" class="altaExam">
       <p class="descrip">
