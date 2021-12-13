@@ -1,6 +1,6 @@
 <footer>
   <div>
-    <a href="Examinator_Manual de estilo.pdf">Guía de estilo</a> <br>
+    <a href="styles/Examinator_Manual de estilo.pdf">Guía de estilo</a> <br>
     <a href="mapa.php">Mapa del sitio</a>
   </div>
 

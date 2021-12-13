@@ -61,17 +61,17 @@ function pintarTematicas(){
   <?php require_once("Vistas/nav.php");?>
 
   <section>
-    <h1>Alta examen</h1>
-    <form action="" method="post" id="form">
-      <p>
-        <label for="descripcion">Descripción</label>
+    <h2>Alta examen</h2>
+    <form action="" method="post" id="form" class="altaExam">
+      <p class="descrip">
+        <label for="descripcion">Descripción: </label>
         <input type="text" name="descripcion" id="descripcion" required="required">
 
-        <label for="duracion">Duración</label>
+        <label for="duracion"> Duración: </label>
         <input type="text" name="duracion" id="duracion" required="required" maxlength="3"> min.
       </p>
 
-      <p>Filtrar:
+      <p class="filtrar">Filtrar:
         <select name="filtro" id="filtro">
           <option  value="0" selected>- Selecciona Temática -</option>
           <?php
@@ -88,7 +88,7 @@ function pintarTematicas(){
 
       <div id="pSeleccionadas"></div>
 
-      <p class="btn"><input type="submit" id="guardar" name="guardar" value="Guardar"></p>
+      <p class="btnExam"><input type="submit" id="guardar" name="guardar" value="Guardar"></p>
     </form>
   </section>
 
