@@ -102,7 +102,7 @@ if(isset($_POST['aceptar'])){
           <input type="radio" name="rCorrecta" value="2"> Correcta
       </p>
 
-      <p><input type="submit" class="btAcept" name="aceptar" value="Aceptar"></p>
+      <input type="submit" class="btAcept" name="aceptar" value="Aceptar">
     </form>
   </section>
 

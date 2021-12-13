@@ -339,8 +339,10 @@ section .altaPreg {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 30%;
+  width: 25%;
   text-align: center;
+  height: 500px;
+  padding: 10px 0;
   background-color: #f5a53d;
   font-family: Georgia, "Times New Roman";
   font-size: 0.8em;
@@ -349,6 +351,12 @@ section .altaPreg {
 }
 section .altaPreg .fichero {
   margin-bottom: 2%;
+}
+section .altaPreg p {
+  margin-left: 20%;
+  margin-right: 20%;
+  text-align: left;
+  line-height: 30px;
 }
 
 section {
@@ -382,11 +390,20 @@ section .altaExam .pregunta {
   background-color: #ecd7bb;
 }
 section .altaExam .pregunta .enunciado {
+  float: left;
+  margin: 0;
+  padding: 0;
   width: 70%;
+  height: 50px;
 }
 section .altaExam .pregunta .tematica {
-  width: 30%;
+  background-color: #f5a53d;
+  border-left: 1px solid #333333;
   float: right;
+  margin: 0;
+  padding: 0;
+  width: 30%;
+  height: 50px;
 }
 section .altaExam .oculto {
   display: none;
@@ -502,6 +519,22 @@ table tbody tr td span {
   width: 5%;
   height: 25px;
   cursor: pointer;
+}
+
+.btAcept {
+  width: 25%;
+  height: 25px;
+  margin: 5%;
+  float: right;
+  cursor: pointer;
+  border: 2px solid #24a6b7;
+  border-radius: 10px;
+  transition: 1s linear;
+}
+.btAcept:hover {
+  background-color: #7fc8d2;
+  color: white;
+  transform: scale(1.1);
 }
 
 #centro {

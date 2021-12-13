@@ -57,3 +57,20 @@
     height: 25px;
     cursor: pointer;
 }
+
+.btAcept{
+    width: 25%;
+    height: 25px;
+    margin: 5%;
+    float: right;
+    cursor: pointer;
+    border: 2px solid $colorAz-oscuro;
+    border-radius: 10px;
+    transition: 1s linear;
+
+    &:hover{
+        background-color: $colorAz-claro;
+        color: $color-text-hover;
+        transform: scale(1.1);
+    }
+}
