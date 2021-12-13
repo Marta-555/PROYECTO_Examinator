@@ -1,7 +1,7 @@
 <footer>
   <div>
-    <a href="#">Guía de estilo</a> <br>
-    <a href="#">Mapa del sitio</a>
+    <a href="Examinator_Manual de estilo.pdf">Guía de estilo</a> <br>
+    <a href="mapa.php">Mapa del sitio</a>
   </div>
 
   <div>

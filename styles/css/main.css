@@ -317,6 +317,39 @@ section .masiva p #contenido {
   background-color: #e9b572;
   color: #333333;
 }
+section .alta {
+  display: block;
+  text-align: center;
+  line-height: 40px;
+  font-family: Georgia, "Times New Roman";
+}
+section .alta p {
+  background-color: #f5a53d;
+  border-radius: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
+  height: 100px;
+  padding: 10px;
+}
+section .alta p label {
+  font-weight: bold;
+  font-size: 0.8em;
+}
+section .altaPreg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  text-align: center;
+  background-color: #f5a53d;
+  font-family: Georgia, "Times New Roman";
+  font-size: 0.8em;
+  line-height: 25px;
+  border-radius: 10px;
+}
+section .altaPreg .fichero {
+  margin-bottom: 2%;
+}
 
 table {
   display: table;
@@ -385,6 +418,20 @@ table tbody tr td span {
   transition: 1s linear;
 }
 .masiva #btAceptar:hover {
+  background-color: #7fc8d2;
+  color: white;
+  transform: scale(1.1);
+}
+
+.btAlta {
+  width: 5%;
+  height: 25px;
+  cursor: pointer;
+  border: 2px solid #24a6b7;
+  border-radius: 10px;
+  transition: 1s linear;
+}
+.btAlta:hover {
   background-color: #7fc8d2;
   color: white;
   transform: scale(1.1);

@@ -17,17 +17,29 @@ BD::conectar();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alta usuario</title>
+  <title>Examinator</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="styles/css/main.css">
 </head>
 <body>
-  <h1>Alta de usuario</h1>
-  <form action="" method="post">
-    <p>
-      <label for="email">Email</label> <br>
-      <input type="email" name="email" required="required">
-    </p>
-    <p><input type="submit" name="registrar" value="Aceptar"></p>
-  </form>
+  <?php require_once("Vistas/header.php");?>
+
+  <?php require_once("Vistas/nav.php");?>
+
+  <section>
+    <h2>Alta de usuario</h2>
+    <form action="" method="post" class="alta">
+      <p>
+        Introduzca el email del usuario a registrar: <br>
+        <label for="email">Email: </label>
+        <input type="email" name="email" required="required">
+      </p>
+      <input type="submit" class="btAlta" name="registrar" value="Aceptar">
+    </form>
+  </section>
+
+  <?php require_once("Vistas/footer.php");?>
+
 </body>
 </html>
 

@@ -50,39 +50,48 @@ function pintarTematicas(){
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="styles/css/estiloExamen.css">
+  <title>Examinator</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="styles/css/main.css">
   <script src="js/altaExamen.js"></script>
 </head>
 <body>
-  <h1>Alta examen</h1>
-  <form action="" method="post" id="form">
-    <p>
-      <label for="descripcion">Descripción</label>
-      <input type="text" name="descripcion" id="descripcion" required="required">
+  <?php require_once("Vistas/header.php");?>
 
-      <label for="duracion">Duración</label>
-      <input type="text" name="duracion" id="duracion" required="required" maxlength="3"> min.
-    </p>
+  <?php require_once("Vistas/nav.php");?>
 
-    <p>Filtrar:
-      <select name="filtro" id="filtro">
-        <option  value="0" selected>- Selecciona Temática -</option>
-        <?php
-          pintarTematicas();
-        ?>
-      </select>
-    </p>
-    <hr>
+  <section>
+    <h1>Alta examen</h1>
+    <form action="" method="post" id="form">
+      <p>
+        <label for="descripcion">Descripción</label>
+        <input type="text" name="descripcion" id="descripcion" required="required">
 
-    <h3 class="enunPos">Preguntas posibles</h3>
-    <h3 class="enunSel">Preguntas seleccionadas</h3>
+        <label for="duracion">Duración</label>
+        <input type="text" name="duracion" id="duracion" required="required" maxlength="3"> min.
+      </p>
 
-    <div id="pPosibles"></div>
+      <p>Filtrar:
+        <select name="filtro" id="filtro">
+          <option  value="0" selected>- Selecciona Temática -</option>
+          <?php
+            pintarTematicas();
+          ?>
+        </select>
+      </p>
+      <hr>
 
-    <div id="pSeleccionadas"></div>
+      <h3 class="enunPos">Preguntas posibles</h3>
+      <h3 class="enunSel">Preguntas seleccionadas</h3>
 
-    <p class="btn"><input type="submit" id="guardar" name="guardar" value="Guardar"></p>
-  </form>
+      <div id="pPosibles"></div>
+
+      <div id="pSeleccionadas"></div>
+
+      <p class="btn"><input type="submit" id="guardar" name="guardar" value="Guardar"></p>
+    </form>
+  </section>
+
+  <?php require_once("Vistas/footer.php");?>
 </body>
 </html>

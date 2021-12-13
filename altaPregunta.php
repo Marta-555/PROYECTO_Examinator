@@ -62,40 +62,51 @@ if(isset($_POST['aceptar'])){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Examinator</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="styles/css/main.css">
 </head>
 <body>
-  <h1>Alta pregunta</h1>
-  <form action="" method="post">
-    <input type="file" name="recurso">
-    <p>
-      <label for="tematica">Temática</label> <br>
-      <select name="tematica">
-        <?php
-          pintarTematicas();
-        ?>
-      </select>
-    </p>
-    <p>
-        <label for="enunciadoP">Enunciado</label> <br>
-        <textarea name="enunciadoP" id="enunciadoP" cols="30" rows="10"></textarea>
-    </p>
-    <p>
-        <label for="resp1">Opcion 1</label> <br>
-        <input type="text" name="resp1">
-        <input type="radio" name="rCorrecta" value="0"> Correcta
-    </p>
-    <p>
-        <label for="resp2">Opcion 2</label> <br>
-        <input type="text" name="resp2">
-        <input type="radio" name="rCorrecta" value="1"> Correcta
-    </p>
-    <p>
-        <label for="resp3">Opcion 3</label> <br>
-        <input type="text" name="resp3">
-        <input type="radio" name="rCorrecta" value="2"> Correcta
-    </p>
+  <?php require_once("Vistas/header.php");?>
 
-    <p><input type="submit" name="aceptar" value="Aceptar"></p>
-  </form>
+  <?php require_once("Vistas/nav.php");?>
+
+  <section>
+    <h2>Alta pregunta</h2>
+    <form action="" method="post" class="altaPreg">
+      <input type="file" class="fichero" name="recurso">
+      <p>
+        <label for="tematica">Temática: </label>
+        <select name="tematica">
+          <?php
+            pintarTematicas();
+          ?>
+        </select>
+      </p>
+      <p>
+          <label for="enunciadoP">Enunciado</label> <br>
+          <textarea name="enunciadoP" id="enunciadoP" cols="30" rows="10"></textarea>
+      </p>
+      <p>
+          <label for="resp1">Opcion 1</label> <br>
+          <input type="text" name="resp1">
+          <input type="radio" name="rCorrecta" value="0"> Correcta
+      </p>
+      <p>
+          <label for="resp2">Opcion 2</label> <br>
+          <input type="text" name="resp2">
+          <input type="radio" name="rCorrecta" value="1"> Correcta
+      </p>
+      <p>
+          <label for="resp3">Opcion 3</label> <br>
+          <input type="text" name="resp3">
+          <input type="radio" name="rCorrecta" value="2"> Correcta
+      </p>
+
+      <p><input type="submit" class="btAcept" name="aceptar" value="Aceptar"></p>
+    </form>
+  </section>
+
+  <?php require_once("Vistas/footer.php");?>
+
 </body>
 </html>
