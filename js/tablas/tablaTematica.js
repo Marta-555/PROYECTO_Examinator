@@ -33,11 +33,6 @@ window.addEventListener("load", function(){
             btEditar.innerHTML = "Editar";
             btEditar.style.textDecoration = "underline";
             btEditar.onclick = editarFila;
-            //Botón desactivar
-            var btDesactivar = document.createElement("span");
-            btDesactivar.innerHTML = " Desactivar ";
-            btDesactivar.style.textDecoration = "underline";
-            btDesactivar.onclick = desactivarFila;
 
             //Botón borrar
             var btBorrar = document.createElement("span");
@@ -46,7 +41,6 @@ window.addEventListener("load", function(){
             btBorrar.onclick = borrarFila;
 
             columna3.appendChild(btEditar);
-            columna3.appendChild(btDesactivar);
             columna3.appendChild(btBorrar);
 
 
@@ -61,8 +55,6 @@ window.addEventListener("load", function(){
     function borrarFila(){}
 
     function editarFila(){}
-
-    function desactivarFila(){}
 
     function pintarPaginador(){
 

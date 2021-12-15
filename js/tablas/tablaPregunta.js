@@ -8,7 +8,7 @@ window.addEventListener("load", function(){
 
     function pedirDatosJson(pagina){
         //Cogemos los datos del servidor
-        fetch("pedirDatosJson.php?tabla=examen&pagina="+pagina+"&filas=4", {
+        fetch("pedirDatosJson.php?tabla=pregunta&pagina="+pagina+"&filas=4", {
             method:"GET"
         }).then(response => response.json())
         .catch(error => console.error("Error", error))
@@ -17,39 +17,24 @@ window.addEventListener("load", function(){
         })
     }
 
-
-    function pintarTabla(objetoAlumno){
-        objetoAlumno.forEach(elemento => {
+    function pintarTabla(objetoPregunta){
+        objetoPregunta.forEach(elemento => {
             var fila = document.createElement("tr");
 
             var columna1 = document.createElement("td");
             var columna2 = document.createElement("td");
             var columna3 = document.createElement("td");
             var columna4 = document.createElement("td");
-            var columna5 = document.createElement("td");
-            var columna6 = document.createElement("td");
-
 
             columna1.innerHTML = elemento.id;
-            columna2.innerHTML = elemento.descripcion;
-            columna3.innerHTML = elemento.n_preguntas;
-            columna4.innerHTML = elemento.duracion;
-            if(elemento.activo == "1"){
-                columna5.innerHTML = "Si"
-            } else {
-                columna5.innerHTML = "No"
-            }
+            columna2.innerHTML = elemento.enunciado;
+            columna3.innerHTML = elemento.descripcion;
 
             //Botón editar
             var btEditar = document.createElement("span");
             btEditar.innerHTML = "Editar";
             btEditar.style.textDecoration = "underline";
             btEditar.onclick = editarFila;
-            //Botón desactivar
-            var btDesactivar = document.createElement("span");
-            btDesactivar.innerHTML = " Desactivar ";
-            btDesactivar.style.textDecoration = "underline";
-            btDesactivar.onclick = desactivarFila;
 
             //Botón borrar
             var btBorrar = document.createElement("span");
@@ -57,9 +42,8 @@ window.addEventListener("load", function(){
             btBorrar.style.textDecoration = "underline";
             btBorrar.onclick = borrarFila;
 
-            columna6.appendChild(btEditar);
-            columna6.appendChild(btDesactivar);
-            columna6.appendChild(btBorrar);
+            columna4.appendChild(btEditar);
+            columna4.appendChild(btBorrar);
 
 
             tabla.appendChild(fila);
@@ -67,18 +51,12 @@ window.addEventListener("load", function(){
             fila.appendChild(columna2);
             fila.appendChild(columna3);
             fila.appendChild(columna4);
-            fila.appendChild(columna5);
-            fila.appendChild(columna6);
-
         });
     }
-
 
     function borrarFila(){}
 
     function editarFila(){}
-
-    function desactivarFila(){}
 
     function pintarPaginador(){
 

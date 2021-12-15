@@ -8,7 +8,7 @@ window.addEventListener("load", function(){
 
     function pedirDatosJson(pagina){
         //Cogemos los datos del servidor
-        fetch("pedirDatosJson.php?tabla=usuario&pagina="+pagina+"&filas=4", {
+        fetch("pedirDatosJson.php?tabla=examen&pagina="+pagina+"&filas=4", {
             method:"GET"
         }).then(response => response.json())
         .catch(error => console.error("Error", error))
@@ -27,18 +27,25 @@ window.addEventListener("load", function(){
             var columna3 = document.createElement("td");
             var columna4 = document.createElement("td");
             var columna5 = document.createElement("td");
+            var columna6 = document.createElement("td");
 
 
             columna1.innerHTML = elemento.id;
-            columna2.innerHTML = elemento.nombre + " " + elemento.apellidos;
-            columna3.innerHTML = elemento.email;
-            columna4.innerHTML = elemento.rol;
+            columna2.innerHTML = elemento.descripcion;
+            columna3.innerHTML = elemento.n_preguntas;
+            columna4.innerHTML = elemento.duracion;
+            if(elemento.activo == "1"){
+                columna5.innerHTML = "Si"
+            } else {
+                columna5.innerHTML = "No"
+            }
 
             //Botón editar
             var btEditar = document.createElement("span");
             btEditar.innerHTML = "Editar";
             btEditar.style.textDecoration = "underline";
             btEditar.onclick = editarFila;
+
             //Botón desactivar
             var btDesactivar = document.createElement("span");
             btDesactivar.innerHTML = " Desactivar ";
@@ -51,9 +58,9 @@ window.addEventListener("load", function(){
             btBorrar.style.textDecoration = "underline";
             btBorrar.onclick = borrarFila;
 
-            columna5.appendChild(btEditar);
-            columna5.appendChild(btDesactivar);
-            columna5.appendChild(btBorrar);
+            columna6.appendChild(btEditar);
+            columna6.appendChild(btDesactivar);
+            columna6.appendChild(btBorrar);
 
 
             tabla.appendChild(fila);
@@ -62,6 +69,7 @@ window.addEventListener("load", function(){
             fila.appendChild(columna3);
             fila.appendChild(columna4);
             fila.appendChild(columna5);
+            fila.appendChild(columna6);
 
         });
     }
