@@ -4,11 +4,11 @@ class Pregunta implements JsonSerializable{
     /**
      * Atributos de clase
      */
-    public $id;
-    public $enunciado;
-    public $respCorrecta;
-    public $recurso;
-    public $tematica;
+    protected $id;
+    protected $enunciado;
+    protected $respCorrecta;
+    protected $recurso;
+    protected $tematica;
 
     /**
      * Métodos getter

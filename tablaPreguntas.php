@@ -17,7 +17,7 @@ if(!Sesion::existe("login")) {
   <title>Examinator</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="styles/css/main.css">
-  <script src="js/tablaPregunta.js"></script>
+  <script src="js/tablas/tablaPregunta.js"></script>
 </head>
 <body>
   <?php require_once("Vistas/header.php");?>

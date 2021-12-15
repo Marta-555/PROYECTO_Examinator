@@ -57,7 +57,7 @@ if(isset($_POST['aceptar'])){
     //$i=1 para que no tome las cabeceras, si no hay cabecera comienza en 0
     for($i=0; $i<$numCorreos; $i++){
         $email = $lineas[$i];
-      if(BD::existeCorreo($email)){
+      if(BD::existeCorreo("altas_por_confirmar",$email)){
         echo "<p>El email: <strong>$email</strong> ya se encuentra registrado</p>";
         } else {
         //Generamos un id único usando la función uniqid, con un número aleatorio como prefijo

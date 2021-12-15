@@ -26,7 +26,7 @@ class Correo{
             <h3 align='center'>Bienvenido/a a nuestra web de test online EXAMINATOR</h3>
             <p>¡Su cuenta ha sido creada con éxito!</p>
             <p>Para poder comenzar debe activar su cuenta presionando en el enlace que le proporcionamos a continuación.</p>
-            <p><a href='http://localhost/PROYECTO/PROYECTO_Examinator/perfilUsuario.php?idAlta=$idUsusario&email=$email'>Activar cuenta de usuario</a></p>
+            <p><a href='http://localhost/PROYECTO/PROYECTO_Examinator/datosAlumno.php?idAlta=$idUsusario&email=$email'>Activar cuenta de usuario</a></p>
             <p>¡Gracias por confiar en nosotros!</p>
         </div>");
 

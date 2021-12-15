@@ -27,8 +27,8 @@ class BD{
         }
     }
 
-    public static function existeCorreo($email) {
-        $sql = self::$conexion->query("Select * from autoescuela.altas_por_confirmar where email='$email'");
+    public static function existeCorreo(string $tabla, $email) {
+        $sql = self::$conexion->query("Select * from autoescuela.".$tabla." where email='$email'");
 
         $resultado = $sql->fetch();
         if($resultado != 0){
@@ -54,6 +54,11 @@ class BD{
 
         $sql->bindParam(':id_usuario', $id_usuario);
         $sql->bindParam(':email', $email);
+        $sql->execute();
+    }
+
+    public static function borrarAltaPorConfirmar($idAlta){
+        $sql = self::$conexion->prepare("Delete from autoescuela.altas_por_confirmar where id_usuario='$idAlta'");
         $sql->execute();
     }
 
@@ -84,15 +89,13 @@ class BD{
     }
 
     public static function altaPregunta(Pregunta $p){
-        $sql = self::$conexion->prepare("Insert into autoescuela.preguntas values(:id, :enunciado, :resp_correcta, :recurso, :tematica)");
+        $sql = self::$conexion->prepare("Insert into autoescuela.preguntas values(default, :enunciado, :resp_correcta, :recurso, :tematica)");
 
-        $id = $p->getId();
         $enunciadoP = $p->getEnunciado();
         $rCorrecta = $p->getRespCorrecta();
         $recurso = $p->getRecurso();
         $tematica = $p->getTematica();
 
-        $sql->bindParam(':id', $id);
         $sql->bindParam(':enunciado', $enunciadoP);
         $sql->bindParam(':resp_correcta', $rCorrecta);
         $sql->bindParam(':recurso', $recurso);
@@ -227,8 +230,116 @@ class BD{
             $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
         }
         return $registros;
+    }
 
+    public static function listarDatosExamen(string $correo, int $pagina, int $filas):array {
+        $sqlId = self::$conexion->query("Select id from autoescuela.usuario where email = '$correo'");
+        while($registro = $sqlId->fetch()){
+            $id = $registro['id'];
+        }
 
+        $registros = array();
+        $sql = self::$conexion->query("Select fecha, calificacion from autoescuela.examen_realizado where id_alumno='$id'");
+
+        $registros = $sql->fetchAll();
+        $total = count($registros);
+        $paginas = ceil($total/$filas);
+
+        $registros = array();
+        if($pagina <= $paginas){
+            $inicio = ($pagina-1) * $filas;
+            $sql = self::$conexion->query("Select fecha, calificacion from autoescuela.examen_realizado where id_alumno='$id'");
+            $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $registros;
+
+    }
+
+    public static function listarDatosPredef(int $pagina, int $filas):array {
+        $registros = array();
+        $sql = self::$conexion->query("Select id, descripcion, n_preguntas, duracion from autoescuela.examen where activo='1'");
+
+        $registros = $sql->fetchAll();
+        $total = count($registros);
+        $paginas = ceil($total/$filas);
+
+        $registros = array();
+        if($pagina <= $paginas){
+            $inicio = ($pagina-1) * $filas;
+            $sql = self::$conexion->query("Select id, descripcion, n_preguntas, duracion from autoescuela.examen where activo='1'");
+            $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $registros;
+    }
+
+    public static function identificaRol($login) {
+        $sql = self::$conexion->query("Select rol from autoescuela.usuario where email = '$login'");
+
+        while($registro = $sql->fetch()){
+            $rol = $registro['rol'];
+        }
+        return $rol;
+    }
+
+    //Método que devuelve un array con todos los datos que componen un examen
+    public static function leerExamen(){
+        $examen = array();
+        $id = self::obtieneIdExamen();
+
+        //Tomamos los datos del examen
+        $sql = self::$conexion->query("SELECT id, descripcion, n_preguntas, duracion FROM autoescuela.examen as e where id='$id'");
+
+        $examen = $sql->fetch(PDO::FETCH_ASSOC);
+
+        //Tomamos los datos de las preguntas y las incorporamos al examen
+        $preguntas = self::preguntasExamen($id);
+        $examen['preguntas'] = $preguntas;
+
+        return $examen;
+    }
+
+    //Obtenemos el id de un examen de forma aleatoria
+    public static function obtieneIdExamen(){
+        //Consultamos los exámenes que esté activos
+        $sql = self::$conexion->query("SELECT id FROM autoescuela.examen where activo='1'");
+        $disponibles = array();
+        while($registro = $sql->fetch()){
+            $disponibles[] = $registro['id'];
+        }
+        //Escogemos aleatoriamente uno y obtenemos su id
+        $indice = array_rand($disponibles);
+        $id = $disponibles[$indice];
+
+        return $id;
+    }
+
+    public static function preguntasExamen($idExamen){
+        $preguntas = array();
+
+        $sql = self::$conexion->query("select e.id_pregunta, enunciado, recurso from autoescuela.examen_preguntas e join autoescuela.preguntas p on e.id_pregunta = p.id where e.id_examen = '$idExamen'");
+
+        $p = array();
+        while($registro = $sql->fetch(PDO::FETCH_ASSOC)){
+            $p = $registro;
+            $idP = $registro['id_pregunta'];
+
+            //Tomamos los datos de las respuestas y se las añadimos a cada pregunta
+            $r = self::respPreguntas($idP);
+            $p['respuestas'] = $r;
+
+            $preguntas[] = $p;
+        }
+        return $preguntas;
+    }
+
+    //Obtenemos las respuestas de cada pregunta
+    public static function respPreguntas($idPregunta){
+        $r = array();
+        $sql = self::$conexion->query("select id, enunciado from autoescuela.respuestas where pregunta ='$idPregunta'");
+        while($registros = $sql->fetch(PDO::FETCH_ASSOC)){
+            $r[] = $registros;
+        }
+        return $r;
     }
 
 }

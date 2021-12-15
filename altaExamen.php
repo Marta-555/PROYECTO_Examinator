@@ -3,6 +3,10 @@ require "./cargadores/cargarhelper.php";
 require "./cargadores/cargarclases.php";
 
 Sesion::iniciar();
+if(!Sesion::existe("login")) {
+  header("Location:iniciarsesion.php");
+}
+
 BD::conectar();
 
 $valida = new Validacion();
@@ -60,7 +64,7 @@ function pintarTematicas(){
 
   <?php require_once("Vistas/nav.php");?>
 
-  <section id="ex">
+  <section>
     <h2>Alta examen</h2>
     <form action="" method="post" id="form" class="altaExam">
       <p class="descrip">

@@ -4,8 +4,8 @@ class Tematica implements JsonSerializable{
     /**
      * Atributos de clase
      */
-    public $id;
-    public $descripcion;
+    protected $id;
+    protected $descripcion;
 
     /**
      * Métodos getter

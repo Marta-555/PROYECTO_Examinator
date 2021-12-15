@@ -10,7 +10,14 @@ if(isset($_POST['aceptar'])){
 
   if($valida->ValidacionPasada()){
     if(Login::Identifica($_POST['usuario'],$_POST['password'], isset($_POST['recuerdame'])?$_POST['recuerdame']:false)){
-      header("Location: index.php");
+
+      $login = $_SESSION['login'];
+      if(BD::identificaRol($login) == "Administrador"){
+        header("Location: index.php");
+      } else {
+        header("Location: indexAlumno.php");
+      }
+
     } else {
       header("Location: iniciarsesion.php");
     }

@@ -3,6 +3,10 @@ require "./cargadores/cargarhelper.php";
 require "./cargadores/cargarclases.php";
 
 Sesion::iniciar();
+if(!Sesion::existe("login")) {
+  header("Location:iniciarsesion.php");
+}
+
 BD::conectar();
 
 function pintarTematicas(){

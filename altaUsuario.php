@@ -54,7 +54,7 @@ if(isset($_POST['registrar'])){
 
     $email = $_POST['email'];
 
-    if(BD::existeCorreo($email)){
+    if(BD::existeCorreo("altas_por_confirmar", $email)){
       echo "El email: <strong>$email</strong> ya se encuentra registrado";
     } else {
       //Generamos un id único usando la función uniqid, con un número aleatorio como prefijo

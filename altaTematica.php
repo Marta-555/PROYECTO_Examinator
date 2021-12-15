@@ -3,6 +3,9 @@ require "./cargadores/cargarhelper.php";
 require "./cargadores/cargarclases.php";
 
 Sesion::iniciar();
+if(!Sesion::existe("login")) {
+  header("Location:iniciarsesion.php");
+}
 
 $valida = new Validacion();
 if(isset($_POST['aceptar'])){
