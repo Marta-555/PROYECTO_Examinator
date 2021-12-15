@@ -97,7 +97,7 @@ section {
   display: block;
   background-color: white;
   width: 100%;
-  height: 600px;
+  height: 700px;
 }
 section h2 {
   text-align: center;
@@ -144,7 +144,7 @@ nav ul a {
   color: #333333;
   background-color: #7fc8d2;
   text-decoration: none;
-  width: 200px;
+  width: 300px;
   padding: 8px 20px;
   display: block;
   text-align: center;
@@ -158,7 +158,6 @@ nav ul a:hover {
   -moz-animation: iluminar 0.4s linear;
 }
 nav li.categoria {
-  margin: 0 1%;
   float: left;
 }
 nav li.categoria > a {
@@ -314,8 +313,9 @@ section .masiva p {
   text-align: center;
 }
 section .masiva p #contenido {
-  background-color: #e9b572;
-  color: #333333;
+  background-color: #e68200;
+  color: white;
+  padding: 10px;
 }
 section .alta {
   display: block;
@@ -358,11 +358,7 @@ section .altaPreg p {
   text-align: left;
   line-height: 30px;
 }
-
-#ex {
-  height: 700px;
-}
-#ex .altaExam {
+section .altaExam {
   padding-top: 5px;
   display: block;
   text-align: center;
@@ -371,31 +367,31 @@ section .altaPreg p {
   line-height: 25px;
   background-color: #f5a53d;
 }
-#ex .altaExam .filtrar {
+section .altaExam .filtrar {
   text-indent: 50px;
   text-align: left;
   margin-bottom: 1%;
 }
-#ex .altaExam h3 {
+section .altaExam h3 {
   float: left;
   width: 50%;
   font-weight: bold;
 }
-#ex .altaExam .pregunta {
+section .altaExam .pregunta {
   position: relative;
   height: 50px;
   width: 100%;
   border: 1px solid black;
   background-color: #ecd7bb;
 }
-#ex .altaExam .pregunta .enunciado {
+section .altaExam .pregunta .enunciado {
   float: left;
   margin: 0;
   padding: 0;
   width: 70%;
   height: 50px;
 }
-#ex .altaExam .pregunta .tematica {
+section .altaExam .pregunta .tematica {
   background-color: #f5a53d;
   border-left: 1px solid #333333;
   float: right;
@@ -404,10 +400,10 @@ section .altaPreg p {
   width: 30%;
   height: 50px;
 }
-#ex .altaExam .oculto {
+section .altaExam .oculto {
   display: none;
 }
-#ex .altaExam #pPosibles {
+section .altaExam #pPosibles {
   position: relative;
   width: 40%;
   margin-left: 5%;
@@ -416,7 +412,7 @@ section .altaPreg p {
   border: 1px solid black;
   overflow-y: scroll;
 }
-#ex .altaExam #pSeleccionadas {
+section .altaExam #pSeleccionadas {
   margin-left: 5%;
   position: relative;
   width: 40%;
@@ -425,11 +421,7 @@ section .altaPreg p {
   border: 1px solid black;
   overflow-y: scroll;
 }
-
-.perfilUsuario {
-  height: 700px;
-}
-.perfilUsuario form {
+section .perfilUsuario {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -443,7 +435,7 @@ section .altaPreg p {
   line-height: 25px;
   border-radius: 10px;
 }
-.perfilUsuario form p {
+section .perfilUsuario p {
   margin-left: 30%;
   margin-right: 20%;
   text-align: left;

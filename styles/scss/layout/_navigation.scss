@@ -27,7 +27,7 @@ nav {
         a {
             @include colorAz_Claro;
             text-decoration: none;
-            width: 200px;
+            width: 300px;
             padding: 8px 20px;
             display: block;
             text-align: center;
@@ -41,7 +41,6 @@ nav {
     }
 
     li.categoria {
-        margin: 0 1%;
         float: left;
 
         >a {

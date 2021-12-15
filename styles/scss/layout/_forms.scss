@@ -72,8 +72,9 @@ section {
             text-align: center;
 
             #contenido{
-                background-color: $colorNar-claro;
-                color: $color-text;
+                background-color: $colorNar-oscuro;
+                color: $color-text-hover;
+                padding: 10px;
             }
         }
 
@@ -127,12 +128,6 @@ section {
         }
 
     }
-
-}
-
-
-#ex{
-    height: 700px;
 
     .altaExam{
         padding-top: 5px;
@@ -206,12 +201,8 @@ section {
         }
 
     }
-}
 
-.perfilUsuario{
-    height: 700px;
-
-    form{
+    .perfilUsuario{
         display: block;
         margin-left: auto;
         margin-right: auto;
