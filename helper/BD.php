@@ -150,6 +150,17 @@ class BD{
 
     }
 
+    public static function altaExamenRealizado($id_alumno, $id_examen, $calificacion, $ejecucion){
+        $sql= self::$conexion->prepare("Insert into autoescuela.examen_realizado values(default, :id_alumno, :id_examen, NOW(), :calificacion, :ejecucion)");
+
+        $sql->bindParam(':id_alumno', $id_alumno);
+        $sql->bindParam(':id_examen', $id_examen);
+        $sql->bindParam(':calificacion', $calificacion);
+        $sql->bindParam(':ejecucion', $ejecucion);
+
+        $sql->execute();
+    }
+
     public static function obtieneTematicas(){
         $sql= self::$conexion->query("select * from autoescuela.tematica");
 
@@ -163,6 +174,15 @@ class BD{
 
     public static function obtieneId(string $tabla){
         $sql = self::$conexion->query("Select id from autoescuela.".$tabla." order by id desc limit 1");
+        while($registro = $sql->fetch()){
+            $id = $registro['id'];
+        }
+        return $id;
+    }
+
+    public static function obtieneIdAlumno(string $email){
+        $sql = self::$conexion->query("Select * from autoescuela.usuario where email='$email'");
+
         while($registro = $sql->fetch()){
             $id = $registro['id'];
         }
