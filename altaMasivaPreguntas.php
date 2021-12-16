@@ -19,22 +19,42 @@ if(isset($_POST['aceptar'])){
     $lineas = explode("\n", $_POST['contenido']);
 
     $preguntas = array();
-    for($i=0; $i<count($lineas)-1; $i++){
+    for($i=1; $i<count($lineas)-1; $i++){
       array_push($preguntas, explode(",", $lineas[$i]));
     }
 
-    $cabeceras = $preguntas[0];
+    for($i=0; $i<count($preguntas); $i++){
 
-    //introducir los elementos del array en el constructor ???????
+      $enunciado = $preguntas[$i][0];
+      $recurso = $preguntas[$i][1];
+      $resp_1 = $preguntas[$i][2];
+      $resp_2 = $preguntas[$i][3];
+      $resp_3 = $preguntas[$i][4];
+      $rCorrecta = $preguntas[$i][5];
+      $tematica = $preguntas[$i][6];
+
+      $p = new Pregunta(array('id'=>'default', 'enunciado'=>$enunciado, 'respCorrecta'=>null, 'recurso'=>$recurso, 'tematica'=>$tematica));
+      BD::altaPregunta($p);
+
+      $respuestas = array($resp_1, $resp_2, $resp_3);
+      $idPregunta = BD::obtieneId("preguntas");
+
+      for($a=0; $a<count($respuestas); $a++){
+        $r = new Respuesta(array('enunciado'=>$respuestas[$i], 'pregunta'=>$idPregunta));
+        BD::altaRespuesta($r);
+        if($a == $rCorrecta-1){
+          $idRespuesta = BD::obtieneId("respuestas");
+
+          BD::modificaRCorrecta($idRespuesta, $idPregunta);
+        }
+      }
+
+    }
 
   }
 
-
 }
 
-
-
-//Enunciado, 3 respuestas - 1correcta, tematica, recurso
 ?>
 
 <!DOCTYPE html>

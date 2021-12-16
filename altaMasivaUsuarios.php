@@ -32,7 +32,7 @@ BD::conectar();
       <h2>Usuarios/Alta masiva de usuarios</h2>
       <input type="file" name="archivoTexto" id="archivoTexto" required="required">
       <p>
-        <textarea name="contenido" id="contenido" cols="60" rows="20" readonly></textarea>
+        <textarea name="contenido" id="contenido" cols="60" rows="20"></textarea>
       </p>
       <p><input type="submit" id="btAceptar" name="aceptar" value="Aceptar"></p>
     </form>
