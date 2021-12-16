@@ -4,26 +4,33 @@ require "cargadores/cargarclases.php";
 
 
 Sesion::iniciar();
+if(!Sesion::existe("login")) {
+  header("Location:iniciarsesion.php");
+}
 
-$valida = new Validacion();
-
-if(isset($_POST['registrar'])){
-  $valida->Requerido('email');
-  $valida->Email('email');
-  $valida->Requerido('nombre');
-  $valida->Requerido('apellidos');
-  $valida->Requerido('password');
-  $valida->Requerido('fecha_nacim');
-  $valida->Requerido('rol');
+$usuario = Sesion::leer("login");
+BD::conectar();
 
 
-  if($valida->ValidacionPasada()){
+function pintarDatos($usuario){
+  $campos = "*";
+  $u = BD::obtieneDatosAlumno($usuario, $campos);
 
-    $usuario = new Usuario(array('email'=>$_POST['email'],'nombre'=>$_POST['nombre'],'apellidos'=>$_POST['apellidos'], 'password'=>$_POST['password'],'fecha_nacim'=>$_POST['fecha_nacim'], 'rol'=>$_POST['rol'], 'foto'=>$_POST['foto']));
+  $email = $u->getEmail();
+  $nombre = $u->getNombre();
+  $apellidos = $u->getApellidos();
+  $password = $u->getPassword();
+  $fecha_nacim = $u->getFecha_nacim();
+  $foto = $u->getFoto();
 
-    BD::conectar();
-    BD::altaUsuario($usuario);
-  }
+  echo "<form action='' method='post' id='perfilUsuario'>";
+  echo "<p>Nombre: ".$nombre." ".$apellidos."</p>";
+  echo "<p>Email: ".$email."</p>";
+  echo "<p>Contraseña: ********* </p>";
+  echo "<p>Fecha nacimiento: ".$fecha_nacim."</p>";
+  echo "<div>".$foto."</div>";
+  echo "<input type='submit' name='editar' value='Editar' id='btEditar'>";
+  echo "</form>";
 }
 
 ?>
@@ -37,50 +44,18 @@ if(isset($_POST['registrar'])){
   <title>Examinator</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="styles/css/main.css">
+  <script src="js/editarPerfil.js"></script>
 </head>
 <body>
   <?php require_once("Vistas/header.php");?>
 
   <?php require_once("Vistas/nav.php");?>
 
-  <section class="perfilUsuario">
+  <section>
     <h2>Perfil de usuario</h2>
-    <form action="" method="post">
-      <p><input type="submit" name="registrar" value="Editar"></p>
-      <p>
-        <label for="email">Email</label> <br>
-        <input type="email" name="email" required="required">
-      </p>
-      <p>
-        <label for="nombre">Nombre</label> <br>
-        <input type="text" name="nombre" required="required">
-      </p>
-      <p>
-        <label for="apellidos">Apellidos</label> <br>
-        <input type="text" name="apellidos" required="required">
-      </p>
-      <p>
-        <label for="password">Contraseña</label> <br>
-        <input type="password" name="password" required="required">
-      </p>
-      <p>
-        <label for="fecha_nacim">Fecha de nacimiento</label> <br>
-        <input type="date" name="fecha_nacim" required="required">
-      </p>
-      <p>
-        <label for="rol">Rol</label> <br>
-        <select name="rol">
-          <option value="Administrador">1. Administrador</option>
-          <option value="Alumno" selected>2. Alumno</option>
-        </select>
-      </p>
-      <p>
-        <label for="foto">Foto</label> <br>
-        <input type="file" name="foto">
-      </p>
 
+    <?php pintarDatos($usuario); ?>
 
-    </form>
   </section>
 
   <?php require_once("Vistas/footer.php");?>

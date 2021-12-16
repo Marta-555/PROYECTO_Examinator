@@ -172,6 +172,7 @@ class BD{
         return $temas;
     }
 
+    //Obtiene el último id
     public static function obtieneId(string $tabla){
         $sql = self::$conexion->query("Select id from autoescuela.".$tabla." order by id desc limit 1");
         while($registro = $sql->fetch()){
@@ -180,13 +181,24 @@ class BD{
         return $id;
     }
 
-    public static function obtieneIdAlumno(string $email){
-        $sql = self::$conexion->query("Select * from autoescuela.usuario where email='$email'");
+    public static function obtieneDatosAlumno(string $email, string $campos){
+        if($campos == "id"){
+            $sql = self::$conexion->query("Select id from autoescuela.usuario where email='$email'");
 
-        while($registro = $sql->fetch()){
-            $id = $registro['id'];
+            while($registro = $sql->fetch()){
+                $datos = $registro['id'];
+            }
         }
-        return $id;
+
+        if($campos == "*"){
+            $sql = self::$conexion->query("Select * from autoescuela.usuario where email='$email'");
+
+            while($registro = $sql->fetch()){
+                $datos = new Usuario(array('email'=>$registro['email'], 'nombre'=>$registro['nombre'], 'apellidos'=>$registro['apellidos'], 'password'=>$registro['password'], 'fecha_nacim'=>$registro['fecha_nacim'],'rol'=>$registro['rol'], 'foto'=>$registro['foto']));
+            }
+
+        }
+        return $datos;
     }
 
     public static function obtienePreguntas_Tematica(){

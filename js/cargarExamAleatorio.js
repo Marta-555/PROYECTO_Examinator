@@ -64,8 +64,10 @@ window.addEventListener("load", function(){
                 radio.setAttribute("name", "preg_"+preguntas[i].id_pregunta);
                 radio.setAttribute("id", "resp_"+preguntas[i].respuestas[j].id);
 
-                radio.onclick = function() {
-                    seleccionRadio();
+                radio.ondblclick = function() {
+                    if(this.checked == true){
+                        this.checked = false;
+                    }
                 }
                 var span = document.createElement("span");
                 span.innerText = preguntas[i].respuestas[j].enunciado;
@@ -115,10 +117,6 @@ window.addEventListener("load", function(){
                 boton.setAttribute("class", "marcado");
             }
         }
-    }
-
-    function seleccionRadio() {
-
     }
 
 

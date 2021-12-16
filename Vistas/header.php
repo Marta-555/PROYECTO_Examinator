@@ -1,5 +1,16 @@
+<?php
+    require "./cargadores/cargarhelper.php";
+    BD::conectar();
+?>
 <header>
-    <a href="index.php"><img class="logo" src="img/logo.png" alt="logo"></a>
+    <?php
+        $login = $_SESSION['login'];
+        if(BD::identificaRol($login) == "Administrador"){
+            echo "<a href='index.php'><img class='logo' src='img/logo.png' alt='logo'></a>";
+        } else {
+            echo "<a href='indexAlumno.php'><img class='logo' src='img/logo.png' alt='logo'></a>";
+        }
+    ?>
     <h1>Bienvenido a Examinator <br>tu web de test online</h1>
 
     <div>

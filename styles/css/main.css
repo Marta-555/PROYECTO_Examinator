@@ -421,25 +421,32 @@ section .altaExam #pSeleccionadas {
   border: 1px solid black;
   overflow-y: scroll;
 }
-section .perfilUsuario {
+section #perfilUsuario {
+  position: relative;
+  width: 35%;
+  height: 300px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 25%;
-  text-align: center;
-  height: 500px;
-  padding: 10px 0;
+  padding: 70px;
+  margin: 0 30%;
   background-color: #f5a53d;
   font-family: Georgia, "Times New Roman";
   font-size: 0.8em;
   line-height: 25px;
   border-radius: 10px;
+  text-align: center;
 }
-section .perfilUsuario p {
-  margin-left: 30%;
-  margin-right: 20%;
-  text-align: left;
+section #perfilUsuario p {
+  text-align: justify;
   line-height: 30px;
+}
+section #perfilUsuario div {
+  position: absolute;
+  right: 1%;
+  top: 7%;
+  background-color: #ecd7bb;
+  width: 35%;
+  height: 250px;
+  border-radius: 10px;
 }
 section .aleatorio {
   position: absolute;
@@ -631,6 +638,22 @@ table tbody tr td span {
   transition: 1s linear;
 }
 .aleatorio #finaliza:hover {
+  background-color: #7fc8d2;
+  color: white;
+  transform: scale(1.1);
+}
+
+#btEditar {
+  margin-top: 5%;
+  margin-right: 60%;
+  width: 25%;
+  height: 25px;
+  cursor: pointer;
+  border: 2px solid #24a6b7;
+  border-radius: 10px;
+  transition: 1s linear;
+}
+#btEditar:hover {
   background-color: #7fc8d2;
   color: white;
   transform: scale(1.1);

@@ -94,3 +94,21 @@
         }
     }
 }
+
+#btEditar{
+    margin-top: 5%;
+    margin-right: 60%;
+    width: 25%;
+    height: 25px;
+
+    cursor: pointer;
+    border: 2px solid $colorAz-oscuro;
+    border-radius: 10px;
+    transition: 1s linear;
+
+    &:hover{
+        background-color: $colorAz-claro;
+        color: $color-text-hover;
+        transform: scale(1.1);
+    }
+}
