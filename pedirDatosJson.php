@@ -27,6 +27,11 @@ if(isset($_GET['tabla'])){
         $datos = BD::listarDatosExamen($correo, $_GET['pagina'], $_GET['filas']);
     }
 
+    if($tabla == "historico"){
+        $correo = null;
+        $datos = BD::listarDatosExamen($correo, $_GET['pagina'], $_GET['filas']);
+    }
+
     if($tabla == "pregunta"){
         $datos = BD::listarDatosPreg($_GET['pagina'], $_GET['filas']);
     }

@@ -20,7 +20,7 @@
       <li class="categoria"><a href="tablaExamenes.php">Exámenes</a>
           <ul class="submenu">
             <li><a href="altaExamen.php">Alta examen</a></li>
-            <li><a href="#">Histórico</a></li>
+            <li><a href="historico.php">Histórico</a></li>
         </ul>
       </li>
     </ul>

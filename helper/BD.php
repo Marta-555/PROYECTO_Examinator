@@ -264,24 +264,41 @@ class BD{
         return $registros;
     }
 
-    public static function listarDatosExamen(string $correo, int $pagina, int $filas):array {
-        $sqlId = self::$conexion->query("Select id from autoescuela.usuario where email = '$correo'");
-        while($registro = $sqlId->fetch()){
-            $id = $registro['id'];
-        }
+    public static function listarDatosExamen(string $correo = null, int $pagina, int $filas):array {
+        if(is_null($correo)){
+            $registros = array();
+            $sql = self::$conexion->query("Select u.email, e.fecha, e.calificacion from autoescuela.usuario as u, autoescuela.examen_realizado as e where e.id_alumno=u.id");
 
-        $registros = array();
-        $sql = self::$conexion->query("Select fecha, calificacion from autoescuela.examen_realizado where id_alumno='$id'");
+            $registros = $sql->fetchAll();
+            $total = count($registros);
+            $paginas = ceil($total/$filas);
 
-        $registros = $sql->fetchAll();
-        $total = count($registros);
-        $paginas = ceil($total/$filas);
+            $registros = array();
+            if($pagina <= $paginas){
+                $inicio = ($pagina-1) * $filas;
+                $sql = self::$conexion->query("Select u.email, e.fecha, e.calificacion from autoescuela.usuario as u, autoescuela.examen_realizado as e where e.id_alumno=u.id limit ".$inicio.",".$filas);
+                $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
+            }
 
-        $registros = array();
-        if($pagina <= $paginas){
-            $inicio = ($pagina-1) * $filas;
+        } else{
+            $sqlId = self::$conexion->query("Select id from autoescuela.usuario where email = '$correo'");
+            while($registro = $sqlId->fetch()){
+                $id = $registro['id'];
+            }
+
+            $registros = array();
             $sql = self::$conexion->query("Select fecha, calificacion from autoescuela.examen_realizado where id_alumno='$id'");
-            $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+            $registros = $sql->fetchAll();
+            $total = count($registros);
+            $paginas = ceil($total/$filas);
+
+            $registros = array();
+            if($pagina <= $paginas){
+                $inicio = ($pagina-1) * $filas;
+                $sql = self::$conexion->query("Select fecha, calificacion from autoescuela.examen_realizado where id_alumno='$id' limit ".$inicio.",".$filas);
+                $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
+            }
         }
         return $registros;
 
@@ -298,7 +315,7 @@ class BD{
         $registros = array();
         if($pagina <= $paginas){
             $inicio = ($pagina-1) * $filas;
-            $sql = self::$conexion->query("Select id, descripcion, n_preguntas, duracion from autoescuela.examen where activo='1'");
+            $sql = self::$conexion->query("Select id, descripcion, n_preguntas, duracion from autoescuela.examen where activo='1'limit ".$inicio.",".$filas);
             $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
         }
         return $registros;
