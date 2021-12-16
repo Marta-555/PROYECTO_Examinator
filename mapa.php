@@ -1,3 +1,13 @@
+<?php
+require "./cargadores/cargarhelper.php";
+
+Sesion::iniciar();
+if(!Sesion::existe("login")) {
+  header("Location:iniciarsesion.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

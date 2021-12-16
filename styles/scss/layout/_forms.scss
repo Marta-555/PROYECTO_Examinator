@@ -224,4 +224,86 @@ section {
         }
     }
 
+
+    .aleatorio{
+        position: absolute;
+        padding: 10px;
+        display: block;
+        text-align: center;
+        font-family: $fuentes-titulos;
+        font-size: $xs-size;
+        line-height: 25px;
+        background-color: $colorNar-medio;
+        width: 100%;
+        height: 500px;
+
+        div {
+            margin:1% 0;
+        }
+
+        #contenedor {
+            width: 100%;
+            height: 80%;
+            display: block;
+            padding: 40px;
+
+            .oculto{
+                display: none;
+            }
+
+            section{
+                width: 100%;
+                height: 100%;
+
+                h2{
+                    margin: 1% 10%;
+                    padding: 0 50px;
+                    font-size: $m-size;
+                    text-align: justify;
+                }
+
+                #enunciado{
+                    width: 100%;
+                    height: 20px;
+                    margin: 2% 5%;
+                    padding: 0 50px;
+                    text-align: justify;
+                    line-height: 25px;
+
+                }
+                #respuestas{
+                    width: 100%;
+                    height: 20%;
+                    margin: 0 10%;
+                    margin: 0 5%;
+                    padding: 0 50px;
+                    text-align: justify;
+                    line-height: 25px;
+
+                    p{
+                        margin: 1% 0;
+                        span{
+                            padding-left: 20px;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        #paginador {
+            width: 100%;
+            height: 10%;
+            margin: 0;
+            padding: 0;
+
+            .marcado{
+                background-color: $colorAz-oscuro;
+                color: $color-text-hover;
+                border: 1px solid black;
+            }
+        }
+
+    }
+
 }

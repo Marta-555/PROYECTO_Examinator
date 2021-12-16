@@ -74,3 +74,23 @@
         transform: scale(1.1);
     }
 }
+
+.aleatorio{
+
+    #finaliza {
+        position: absolute;
+        right: 5%;
+        top: 3%;
+        padding: 10px 20px;
+        cursor: pointer;
+        border: 2px solid $colorAz-oscuro;
+        border-radius: 10px;
+        transition: 1s linear;
+
+        &:hover{
+            background-color: $colorAz-claro;
+            color: $color-text-hover;
+            transform: scale(1.1);
+        }
+    }
+}

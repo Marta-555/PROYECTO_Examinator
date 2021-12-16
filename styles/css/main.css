@@ -441,6 +441,74 @@ section .perfilUsuario p {
   text-align: left;
   line-height: 30px;
 }
+section .aleatorio {
+  position: absolute;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  font-family: Georgia, "Times New Roman";
+  font-size: 0.8em;
+  line-height: 25px;
+  background-color: #f5a53d;
+  width: 100%;
+  height: 500px;
+}
+section .aleatorio div {
+  margin: 1% 0;
+}
+section .aleatorio #contenedor {
+  width: 100%;
+  height: 80%;
+  display: block;
+  padding: 40px;
+}
+section .aleatorio #contenedor .oculto {
+  display: none;
+}
+section .aleatorio #contenedor section {
+  width: 100%;
+  height: 100%;
+}
+section .aleatorio #contenedor section h2 {
+  margin: 1% 10%;
+  padding: 0 50px;
+  font-size: 1.4em;
+  text-align: justify;
+}
+section .aleatorio #contenedor section #enunciado {
+  width: 100%;
+  height: 20px;
+  margin: 2% 5%;
+  padding: 0 50px;
+  text-align: justify;
+  line-height: 25px;
+}
+section .aleatorio #contenedor section #respuestas {
+  width: 100%;
+  height: 20%;
+  margin: 0 10%;
+  margin: 0 5%;
+  padding: 0 50px;
+  text-align: justify;
+  line-height: 25px;
+}
+section .aleatorio #contenedor section #respuestas p {
+  margin: 1% 0;
+}
+section .aleatorio #contenedor section #respuestas p span {
+  padding-left: 20px;
+}
+section .aleatorio #paginador {
+  width: 100%;
+  height: 10%;
+  margin: 0;
+  padding: 0;
+}
+section .aleatorio #paginador .marcado {
+  background-color: #24a6b7;
+  color: white;
+  border: 1px solid black;
+}
 
 table {
   display: table;
@@ -547,6 +615,22 @@ table tbody tr td span {
   transition: 1s linear;
 }
 .btAcept:hover {
+  background-color: #7fc8d2;
+  color: white;
+  transform: scale(1.1);
+}
+
+.aleatorio #finaliza {
+  position: absolute;
+  right: 5%;
+  top: 3%;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 2px solid #24a6b7;
+  border-radius: 10px;
+  transition: 1s linear;
+}
+.aleatorio #finaliza:hover {
   background-color: #7fc8d2;
   color: white;
   transform: scale(1.1);

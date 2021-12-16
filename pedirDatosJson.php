@@ -1,7 +1,9 @@
 <?php
 require "./cargadores/cargarhelper.php";
 
+Sesion::iniciar();
 BD::conectar();
+
 if(isset($_GET['tabla'])){
     $tabla = $_GET['tabla'];
 
@@ -22,8 +24,7 @@ if(isset($_GET['tabla'])){
 
     if($tabla == "historicoExam"){
         $correo = $_SESSION['login'];
-        $campos = ["fecha", "calificacion"];
-        $datos = BD::listarDatosExamen($correo, $campos, $_GET['pagina'], $_GET['filas']);
+        $datos = BD::listarDatosExamen($correo, $_GET['pagina'], $_GET['filas']);
     }
 
     if($tabla == "pregunta"){
