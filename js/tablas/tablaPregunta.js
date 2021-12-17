@@ -31,15 +31,13 @@ window.addEventListener("load", function(){
             columna3.innerHTML = elemento.descripcion;
 
             //Botón editar
-            var btEditar = document.createElement("span");
-            btEditar.innerHTML = "Editar";
-            btEditar.style.textDecoration = "underline";
+            var btEditar = document.createElement("i");
+            btEditar.setAttribute("class", "far fa-edit");
             btEditar.onclick = editarFila;
 
             //Botón borrar
-            var btBorrar = document.createElement("span");
-            btBorrar.innerHTML = "Borrar";
-            btBorrar.style.textDecoration = "underline";
+            var btBorrar = document.createElement("i");
+            btBorrar.setAttribute("class", "far fa-trash-alt");
             btBorrar.onclick = borrarFila;
 
             columna4.appendChild(btEditar);
@@ -54,9 +52,127 @@ window.addEventListener("load", function(){
         });
     }
 
-    function borrarFila(){}
+    function borrarFila(){
+        var fila = this.parentElement.parentElement;
+        var id = fila.children[0].textContent;
 
-    function editarFila(){}
+        var formData = new FormData();
+        formData.append("borrarPreg", id);
+
+        fetch("recibeDatos.php", {
+            method: "POST",
+            body: formData
+        }).catch(error => console.error("Error", error))
+        .then(response =>{
+
+            if(response.ok){
+                fila.parentElement.removeChild(fila);
+                alert("Pregunta borrada correctamente");
+                window.location="tablaPreguntas.php";
+            } else {
+                alert("Error al borrar la pregunta");
+
+            }
+        })
+    }
+
+    function editarFila(){
+        var fila = this.parentElement.parentElement;
+        var contenedor=document.createElement("div");
+        var td =this.parentElement;
+        fila.contenedor=contenedor;
+        contenedor.appendChild(td.children[0]);
+        contenedor.appendChild(td.children[0]);
+
+        var tds=fila.children;
+        for (let i=0; i<tds.length-1; i++){
+            var contenido = tds[i].innerText;
+            tds[i].setAttribute("valor",contenido);
+            if(i == 1){
+                var input=document.createElement("input");
+                input.type="text";
+                input.value=contenido;
+                tds[i].removeChild(tds[i].childNodes[0]);
+                tds[i].appendChild(input);
+            } else {
+                var input=document.createElement("input");
+                input.type="text";
+                input.setAttribute("readonly", true);
+                input.value=contenido;
+                tds[i].removeChild(tds[i].childNodes[0]);
+                tds[i].appendChild(input);
+            }
+
+        }
+
+        //Creamos los botones Cancelar/Guardar y les damos funcionalidad
+        var btCancelar = document.createElement("i");
+        btCancelar.setAttribute("class", "far fa-window-close");
+        btCancelar.onclick = cancelarModificacion;
+
+        var btGuardar = document.createElement("i");
+        btGuardar.setAttribute("class", "far fa-save");
+        btGuardar.onclick = guardarModificacion;
+
+        td.appendChild(btCancelar);
+        td.appendChild(btGuardar);
+    }
+
+
+    function cancelarModificacion(){
+        var fila = this.parentElement.parentElement;
+        var columna = this.parentElement;
+        var columnas = fila.children;
+
+        for(let i=0; i<columnas.length-1; i++){
+            var valor = columnas[i].getAttribute("valor");
+            columnas[i].innerHTML = valor;
+        }
+        columna.innerHTML = "";
+        columna.appendChild(fila.contenedor.children[0]);
+        columna.appendChild(fila.contenedor.children[0]);
+    }
+
+
+    function guardarModificacion(){
+        var fila =  this.parentElement.parentElement;
+        var columna = this.parentElement;
+        var columnas = fila.children;
+
+        //Validamos los datos
+        var respuestas = [];
+        respuestas.push((columnas[1].children[0].value != "")? true:false);
+
+        if(respuestas.every(function(valor, indice){return valor})){
+            for(let i=0; i<columnas.length-1; i++){
+                let valor = columnas[i].children[0].value;
+                columnas[i].innerHTML = valor;
+            }
+            columna.innerHTML="";
+            columna.appendChild(fila.contenedor.children[0]);
+            columna.appendChild(fila.contenedor.children[0]);
+        }
+
+        var id = columnas[0].textContent;
+        var datos = columnas[1].textContent;
+
+        var formData = new FormData();
+        formData.append("modificaPreg", id);
+        formData.append("valor", datos);
+        fetch("recibeDatos.php", {
+            method: "POST",
+            body: formData
+        }).catch(error => console.error("Error", error))
+        .then(response =>{
+            if(response.ok){
+                alert("Pregunta modificada correctamente");
+                window.location="tablaPreguntas.php";
+            } else {
+                alert("Error al modificar la pregunta");
+
+            }
+        })
+    }
 
     function pintarPaginador(){
 

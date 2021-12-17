@@ -391,6 +391,29 @@ class BD{
         return $r;
     }
 
+    public static function borrarDatos(string $id, string $tabla){
+        $sql = self::$conexion->prepare("Delete from autoescuela.".$tabla." where id='$id'");
+        $sql->execute();
+    }
+
+    public static function modificaDatosAl($id, $nombre, $apellidos){
+        $sql = self::$conexion->prepare("Update autoescuela.usuario set nombre='".$nombre."', apellidos='".$apellidos."' where id=".$id."");
+
+        $sql->execute();
+    }
+
+    public static function modificaDatosTe($id, $tema){
+        $sql = self::$conexion->prepare("Update autoescuela.tematica set descripcion='".$tema."' where id=".$id."");
+
+        $sql->execute();
+    }
+
+    public static function modificaDatosPreg($id, $preg){
+        $sql = self::$conexion->prepare("Update autoescuela.preguntas set enunciado='".$preg."' where id=".$id."");
+
+        $sql->execute();
+    }
+
 }
 
 ?>

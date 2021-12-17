@@ -18,6 +18,16 @@ if(isset($_POST['borrarTema'])){
     BD::borrarDatos($id, $tabla);
 }
 
+if(isset($_POST['borrarPreg'])){
+    $id = $_POST['borrarPreg'];
+    $tabla = "preguntas";
+
+    BD::borrarDatos($id, $tabla);
+    //Borrar tambien sus respuestas
+}
+
+
+
 if(isset($_POST['modificaUsuario'])){
     $id = $_POST['modificaUsuario'];
     $datos = explode(",", $_POST['valor']);
@@ -32,5 +42,12 @@ if(isset($_POST['modificaTema'])){
     $tema = ($_POST['valor']);
 
     BD::modificaDatosTe($id, $tema);
+}
+
+if(isset($_POST['modificaPreg'])){
+    $id = $_POST['modificaPreg'];
+    $preg = ($_POST['valor']);
+
+    BD::modificaDatosPreg($id, $preg);
 }
 
