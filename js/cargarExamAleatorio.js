@@ -148,7 +148,7 @@ window.addEventListener("load", function(){
         .then(response =>{
 
             if(response.ok){
-                location.href="indexAlumno.php";;
+                location.href="indexAlumno.php";
             } else {
                 alert("Error al enviar el examen");
 

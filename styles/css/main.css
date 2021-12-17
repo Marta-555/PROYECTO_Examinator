@@ -546,8 +546,9 @@ table tbody tr td {
   text-align: center;
   padding: 5px;
 }
-table tbody tr td span {
+table tbody tr td i {
   cursor: pointer;
+  padding: 0 10px;
 }
 
 #paginador {
