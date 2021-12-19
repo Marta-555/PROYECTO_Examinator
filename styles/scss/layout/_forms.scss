@@ -250,6 +250,18 @@ section {
             margin:1% 0;
         }
 
+        #reloj{
+            background-color: $colorAz-oscuro;
+            color: white;
+            position: absolute;
+            left: 5%;
+            top: 0;
+            padding: 8px 5px;
+            border: 2px solid $colorAz-claro;
+            border-radius: 10px;
+            width: 7%;
+        }
+
         #contenedor {
             width: 100%;
             height: 80%;

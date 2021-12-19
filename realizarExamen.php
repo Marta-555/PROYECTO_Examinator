@@ -26,6 +26,7 @@ if(!Sesion::existe("login")) {
   <section>
     <h2 id="titulo">Examen aleatorio</h2>
     <form action="" method="post" id="formExamen" class="aleatorio">
+      <div id="reloj"></div>
       <div id="contenedor"></div>
 
       <div id="paginador"></div>

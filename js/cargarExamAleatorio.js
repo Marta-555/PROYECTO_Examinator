@@ -1,6 +1,7 @@
 window.addEventListener("load", function(){
     const contenedor = document.getElementById("contenedor");
     const btFinalizar = document.getElementById("finaliza");
+    const reloj = document.getElementById("reloj");
 
 
     pedirDatos();
@@ -24,9 +25,37 @@ window.addEventListener("load", function(){
         pintarPreguntas(preguntas);
         pintarPaginador(preguntas);
 
+
+
         btFinalizar.onclick = function(){
             finExamen(id_examen);
         }
+
+        cuentaAtras(objExamen.duracion*60*1000);
+
+
+    }
+
+    function cuentaAtras(miliSegundos){
+        var contador = setInterval(function() {
+            miliSegundos-=1000;
+
+            var tiempo = (miliSegundos + 1000)/1000;
+
+            var segundos = ('0'+ Math.floor(tiempo%60)).slice(-2);
+            var minutos = ('0'+ Math.floor(tiempo/60%60)).slice(-2);
+            var horas = ('0'+ Math.floor(tiempo/3600%60));
+
+            reloj.innerHTML = horas + ":" + minutos + ":" + segundos;
+
+            if(tiempo <=1){
+                clearInterval (contador);
+                alert("¡Se acabó el tiempo para realizar el examen!");
+                finExamen.click();
+            }
+
+        }, 1000);
+
     }
 
 
@@ -85,6 +114,8 @@ window.addEventListener("load", function(){
 
         var paginador = document.getElementById("paginador");
 
+        var respuestas = document.getElementById("respuestas");
+
         for(let i=0; i<preguntas.length; i++){
             var btn = document.createElement("input");
             btn.setAttribute("type", "button");
@@ -100,23 +131,29 @@ window.addEventListener("load", function(){
 
     function pasarPregunta(id, preguntas){
 
+
+
         for(let i=0; i<preguntas.length; i++){
             var pregunts = document.getElementById("preg_"+preguntas[i].id_pregunta);
             pregunts.setAttribute("class", "oculto");
 
-            var boton = document.getElementById("paginador").childNodes[i];
-            boton.setAttribute("class", "");
+            for(let j=0; j<3; j++){
+                var respuestas = pregunts.children[2].children[j].firstElementChild;
+
+                if(respuestas.checked == true){
+                    var boton = document.getElementById("paginador").childNodes[i];
+                    boton.setAttribute("class", "marcado");
+                    break;
+                } else {
+                    var boton = document.getElementById("paginador").childNodes[i];
+                    boton.setAttribute("class", "");
+                }
+            }
         }
 
         var pregPulsada = document.getElementById(id);
         pregPulsada.setAttribute("class", "");
 
-        for(let i=0; i<preguntas.length; i++){
-            if(id == document.getElementById("paginador").childNodes[i].id){
-                var boton = document.getElementById("paginador").childNodes[i];
-                boton.setAttribute("class", "marcado");
-            }
-        }
     }
 
 
