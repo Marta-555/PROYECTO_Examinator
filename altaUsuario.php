@@ -36,12 +36,6 @@ BD::conectar();
       </p>
       <input type="submit" class="btAlta" name="registrar" value="Aceptar">
     </form>
-  </section>
-
-  <?php require_once("Vistas/footer.php");?>
-
-</body>
-</html>
 
 
 <?php
@@ -70,3 +64,10 @@ if(isset($_POST['registrar'])){
 }
 
 ?>
+
+</section>
+
+<?php require_once("Vistas/footer.php");?>
+
+</body>
+</html>

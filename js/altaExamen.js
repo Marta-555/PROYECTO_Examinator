@@ -126,7 +126,8 @@ window.addEventListener("load", function(){
             ajax.send(datos);
 
             //Recargamos la página de nuevo para limpiar los datos
-            window.location="altaExamen.php";
+
+            //window.location="altaExamen.php";
         }
 
     }

@@ -29,19 +29,14 @@ BD::conectar();
 
   <section>
     <form action="" method="post" class="masiva">
-      <h2>Usuarios/Alta masiva de usuarios</h2>
-      <input type="file" name="archivoTexto" id="archivoTexto" required="required">
+      <h2>Alta masiva de usuarios</h2>
+      <input type="file" name="archivoTexto" id="archivoTexto">
       <p>
         <textarea name="contenido" id="contenido" cols="60" rows="20"></textarea>
       </p>
       <p><input type="submit" id="btAceptar" name="aceptar" value="Aceptar"></p>
     </form>
-  </section>
 
-  <?php require_once("Vistas/footer.php");?>
-
-</body>
-</html>
 
 <?php
 if(isset($_POST['aceptar'])){
@@ -52,14 +47,14 @@ if(isset($_POST['aceptar'])){
     //Separamos el contenido en un array
     $lineas = explode("\n", $_POST['contenido']);
     //Guardamos en una variable la cantidad de correos a registrar, sin contar con el útlimo (valor "")
-    $numCorreos = count($lineas)-1;
+    $numCorreos = count($lineas);
 
-    //$i=1 para que no tome las cabeceras, si no hay cabecera comienza en 0
     for($i=0; $i<$numCorreos; $i++){
-        $email = $lineas[$i];
+      $email = $lineas[$i];
+
       if(BD::existeCorreo("altas_por_confirmar",$email)){
-        echo "<p>El email: <strong>$email</strong> ya se encuentra registrado</p>";
-        } else {
+        echo "<span>El email: <strong>$email</strong> ya se encuentra registrado</span><br>";
+      } else {
         //Generamos un id único usando la función uniqid, con un número aleatorio como prefijo
         $id_usuario = uniqid(rand());
         BD::altaUsuarioPorConfirmar($id_usuario , $email);
@@ -68,12 +63,21 @@ if(isset($_POST['aceptar'])){
 
         //Si es el último correo aparece el mensaje
         if($i == $numCorreos-1){
-            echo "<p><strong>¡Los usuarios han sido registrados con éxito!</strong></p><p>Recibirán un email para la activación de la cuenta</p>";
+          echo "<span><strong>¡Los usuarios han sido registrados con éxito!</strong></span>";
         }
+
       }
     }
+
   }
 
 }
 
 ?>
+
+  </section>
+
+  <?php require_once("Vistas/footer.php");?>
+
+</body>
+</html>

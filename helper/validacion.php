@@ -99,7 +99,7 @@ class Validacion {
      */
     public function Patron($campo,$patron) {
         if(!preg_match($patron,$_POST[$campo])) {
-            $this->errores[$campo]="No cumple el patrón $patron";
+            $this->errores[$campo]="No cumple el patrón: debe tener al menos un caracter especial, un número y una letra";
             return false;
         }
         return true;
