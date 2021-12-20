@@ -309,6 +309,9 @@ section .masiva h2 {
 section .masiva #archivoTexto {
   margin: 1% 0 2% 20%;
 }
+section .masiva .oculto {
+  display: none;
+}
 section .masiva p {
   text-align: center;
 }

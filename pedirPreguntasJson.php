@@ -1,13 +1,22 @@
 <?php
 require "cargadores/cargarhelper.php";
+$obj = new stdClass();
 
 BD::conectar();
 $preguntas = BD::obtienePreguntas_Tematica();
-//var_dump($preguntas);
+
+if($preguntas != null){
+    echo json_encode($preguntas);
 
 
-echo json_encode($preguntas);
-//echo json_last_error_msg();
+    $obj->respuesta = "OK";
+
+} else {
+    $obj->respuesta = "ERROR";
+}
+
+
+
 
 
 

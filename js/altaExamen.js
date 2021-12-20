@@ -28,6 +28,18 @@ window.addEventListener("load", function(){
                 }
             }
         }
+
+        for(let i=0; i<preg_examen.length; i++){
+            if(indice == "0"){
+                preg_examen[i].classList.remove("oculto");
+            } else {
+                if(opcionSeleccionada == preg_examen[i].children[1].textContent){
+                    preg_examen[i].classList.remove("oculto");
+                } else {
+                    preg_examen[i].classList.add("oculto");
+                }
+            }
+        }
     }
 
     //Cogemos el json del servidor y pintamos las preguntas

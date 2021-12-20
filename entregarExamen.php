@@ -1,5 +1,6 @@
 <?php
 require "./cargadores/cargarhelper.php";
+$obj = new stdClass();
 
 Sesion::iniciar();
 $usuario = Sesion::leer("login");
@@ -18,4 +19,8 @@ if(isset($_POST['examen'])){
     BD::altaExamenRealizado($id_alumno, $id_examen, "5", $ejecucion);
 
 
+    $obj->respuesta = "OK";
+
+} else {
+    $obj->respuesta = "ERROR";
 }

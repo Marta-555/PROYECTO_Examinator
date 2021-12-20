@@ -27,7 +27,8 @@ window.addEventListener("load", function(){
 
 
 
-        btFinalizar.onclick = function(){
+        btFinalizar.onclick = function(ev){
+            ev.preventDefault();
             finExamen(id_examen);
         }
 
@@ -185,7 +186,7 @@ window.addEventListener("load", function(){
         .then(response =>{
 
             if(response.ok){
-                location.href="indexAlumno.php";
+                //location.href="historicoExamenes.php";
             } else {
                 alert("Error al enviar el examen");
 

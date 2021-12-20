@@ -35,41 +35,43 @@ BD::conectar();
         <textarea name="contenido" id="contenido" cols="60" rows="20"></textarea>
       </p>
       <p><input type="submit" id="btAceptar" name="aceptar" value="Aceptar"></p>
+
+      <p id="mensaje" class="oculto">Errores encontrados: <br> Email con formato no válido</p>
     </form>
 
 
 <?php
-if(isset($_POST['aceptar'])){
-  $valida = new Validacion();
-  $valida->Requerido('contenido');
 
-  if($valida->ValidacionPasada()){
+if(isset($_POST['datos'])){
+
     //Separamos el contenido en un array
-    $lineas = explode("\n", $_POST['contenido']);
-    //Guardamos en una variable la cantidad de correos a registrar, sin contar con el útlimo (valor "")
+    $lineas = explode("\n", $_POST['datos']);
+
     $numCorreos = count($lineas);
 
     for($i=0; $i<$numCorreos; $i++){
       $email = $lineas[$i];
 
-      if(BD::existeCorreo("altas_por_confirmar",$email)){
-        echo "<span>El email: <strong>$email</strong> ya se encuentra registrado</span><br>";
-      } else {
-        //Generamos un id único usando la función uniqid, con un número aleatorio como prefijo
-        $id_usuario = uniqid(rand());
-        BD::altaUsuarioPorConfirmar($id_usuario , $email);
-        //Enviamos el correo
-        Correo::enviarCorreo($email, $id_usuario);
+      if(filter_var($email,FILTER_VALIDATE_EMAIL)){
+        if(BD::existeCorreo("altas_por_confirmar",$email)){
+          echo "<span>El email: <strong>$email</strong> ya se encuentra registrado</span><br>";
+        } else {
+          //Generamos un id único usando la función uniqid, con un número aleatorio como prefijo
+          $id_usuario = uniqid(rand());
+          BD::altaUsuarioPorConfirmar($id_usuario , $email);
+          //Enviamos el correo
+          Correo::enviarCorreo($email, $id_usuario);
 
-        //Si es el último correo aparece el mensaje
-        if($i == $numCorreos-1){
-          echo "<span><strong>¡Los usuarios han sido registrados con éxito!</strong></span>";
+          //Si es el último correo aparece el mensaje
+          if($i == $numCorreos-1){
+            echo "<span><strong>¡Los usuarios han sido registrados con éxito!</strong></span>";
+          }
+
         }
-
       }
     }
 
-  }
+  //}
 
 }
 

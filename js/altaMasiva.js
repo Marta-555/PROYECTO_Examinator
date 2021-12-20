@@ -1,6 +1,8 @@
 window.addEventListener("load", function(){
     const fichero = document.getElementById("archivoTexto").addEventListener("change", abrirArchivo);
     const txtAlta = document.getElementById("contenido");
+    const btAceptar = document.getElementById("btAceptar");
+    const form = document.getElementsByClassName("masiva");
 
 
     function abrirArchivo(evento){
@@ -43,6 +45,44 @@ window.addEventListener("load", function(){
             resultado.push(texto);
         }
         return resultado;
+
+    }
+
+    btAceptar.onclick = function(){
+        var contenido = document.getElementById("contenido").value;
+        var lineas = contenido.split("\n");
+
+        var datos = encodeURI("datos="+contenido);
+
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "altaMasivaUsuarios.php");
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState != 4 || ajax.status != 200) {
+                return alert("Success: Email registrados correctamente");
+            }
+        };
+        ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        ajax.send(datos);
+
+
+        var errores = [];
+
+        for(let i=0; i<lineas.length-1; i++){
+            if(!(/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(lineas[i]))){
+                errores.push(lineas[i]);
+            }
+        }
+
+        var contenido = document.getElementById("contenido").value="";
+
+        if(errores.length !=0) {
+            for(let i=0; i<errores.length; i++){
+                txtAlta.value += errores[i]+"\n";
+            }
+
+            var mensaje = document.getElementById("mensaje");
+            mensaje.setAttribute("class", "");
+        }
 
     }
 

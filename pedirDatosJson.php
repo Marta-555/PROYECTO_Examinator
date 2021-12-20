@@ -1,5 +1,6 @@
 <?php
 require "./cargadores/cargarhelper.php";
+$obj = new stdClass();
 
 Sesion::iniciar();
 BD::conectar();
@@ -43,6 +44,11 @@ if(isset($_GET['tabla'])){
     echo json_encode($datos);
 
 
+
+    $obj->respuesta = "OK";
+
+} else {
+    $obj->respuesta = "ERROR";
 }
 
 ?>
